@@ -15,8 +15,8 @@ import it.snowdays.app.panels.*;
  * Hello world!
  *
  */
-public class App extends Application
-{
+public class App extends Application{
+    
     protected ArrayList<String> fields = new ArrayList<String>();
 
     public static void main(String[] args){
