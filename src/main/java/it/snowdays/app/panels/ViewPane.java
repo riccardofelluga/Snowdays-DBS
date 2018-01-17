@@ -21,6 +21,7 @@ public class ViewPane extends VBox{
     public ViewPane(){
         getChildren().add(options);
         getChildren().add(table);
+        setVgrow(table, Priority.ALWAYS);
     }
     
     public static void setNewTable(){

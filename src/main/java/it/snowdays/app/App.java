@@ -35,7 +35,7 @@ public class App extends Application{
         Optional<String> result = dialog.showAndWait();
 
         if(result.isPresent()){
-            System.out.println(result.get());
+           // System.out.println(result.get());
             String panelName = result.get();
             
             switch (panelName) {
