@@ -2,6 +2,7 @@ package it.snowdays.app.panels;
 
 
 import it.snowdays.app.TableHandler;
+import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -17,16 +18,22 @@ public class ViewPane extends VBox{
 
     private OptionsPane options = new OptionsPane();
     //private ObservableList tabContent; use it to have an always up-to-date list
-    //private static TableView<String> table = new TableView<String>();
+    private static TableView<ArrayList<String>> table = TableHandler.getCurrentTable();
     
-    public ViewPane(){
+    private static ViewPane instance = new ViewPane();
+
+    private ViewPane(){
         getChildren().add(options);
-        getChildren().add(TableHandler.getCurrentTable());
-        setVgrow(TableHandler.getCurrentTable(), Priority.ALWAYS);
+        getChildren().add(table);
+        setVgrow(table, Priority.ALWAYS);
     }
-    
-    public static void setNewTable(){
-        
+    public static ViewPane getInstance(){
+        return instance;
+    }
+
+    public void setNewTable(){
+        table = TableHandler.getCurrentTable();
+        this.getChildren().set(1, table);
     }
     private class OptionsPane extends GridPane{
 

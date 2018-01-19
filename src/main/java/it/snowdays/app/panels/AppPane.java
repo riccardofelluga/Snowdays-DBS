@@ -10,7 +10,7 @@ public class AppPane extends BorderPane{
 
     public AppPane(MenuBar mb){
         setTop(mb);
-        setCenter(new ViewPane());
+        setCenter(ViewPane.getInstance());
     }
     
 }
