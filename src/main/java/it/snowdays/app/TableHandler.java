@@ -33,6 +33,14 @@ public class TableHandler {
         return instance;
     }
 
+    /*  
+    Maybe it is better to implement something like 
+    a method to set the default table(used by the mb) and than for the
+    search result another method to set the view -> than take the row of 
+    edit/modify it into the original 
+    USE THE HANDLER to modifi the right array
+    */
+
     public static TableView<ArrayList<String>> getCurrentTable() {
 
         table = new TableView<ArrayList<String>>();

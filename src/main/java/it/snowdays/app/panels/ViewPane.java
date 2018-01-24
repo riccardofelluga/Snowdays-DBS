@@ -57,7 +57,7 @@ public class ViewPane extends VBox{
             setHgrow(searchField, Priority.ALWAYS);
 
             searchField.setOnKeyPressed(e -> {
-                if(e.getCode().equals(KeyCode.ENTER))
+                if(e.getCode().equals(KeyCode.ENTER))//trigger only if enter is pressed
                     search(searchField.getText(), selector.getValue());
             });
 
@@ -95,7 +95,7 @@ public class ViewPane extends VBox{
                
                 if(p.get(c).toUpperCase().contains(input.toUpperCase())){
                     
-                    if(first)//to avoid the cols to be shown in result
+                    if(first)//to avoid the cols names to be shown in result
                         first = false;
                     else
                         searchres.add(p);
@@ -110,6 +110,7 @@ public class ViewPane extends VBox{
                 searchres.add(0, SQLFetcher.getList().get(0));
                 TableHandler.getInstance().setTableView(searchres);
                 ViewPane.instance.setNewTable();
+                
             }else{
                 Alert a = new Alert(AlertType.WARNING);
                 a.setTitle("No results");
