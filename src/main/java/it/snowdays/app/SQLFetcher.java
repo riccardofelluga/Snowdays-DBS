@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.postgresql.util.PSQLException;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 /**
  * SQLFetcher
  */
@@ -55,9 +60,12 @@ public class SQLFetcher {
             }
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("SQL error");
+            a.setHeaderText(e.getSQLState());
+            a.setContentText(e.getMessage());
+            a.showAndWait();
+        }
         return retrivedData;
     }
     

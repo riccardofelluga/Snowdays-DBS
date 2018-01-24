@@ -33,6 +33,7 @@ public class ViewPane extends VBox{
 
     public void setNewTable(){
         table = TableHandler.getCurrentTable();
+        
         this.getChildren().set(1, table);
     }
     private class OptionsPane extends GridPane{
@@ -50,7 +51,12 @@ public class ViewPane extends VBox{
     
             selector.getItems().add(0, "Tab1");
             selector.getItems().add(1, "Tab2");
-            selector.setValue("Tab1");
+            selector.setValue("Tab1"); 
+
+            daySelector.getItems().add("Day 1");
+            daySelector.getItems().add("Day 2");
+            daySelector.getItems().add("Day 3");
+            daySelector.setValue("Day 1");
     
             addColumn(0, daySelector);
             addColumn(1, searchField);

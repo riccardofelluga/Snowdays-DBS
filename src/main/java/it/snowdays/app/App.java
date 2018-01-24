@@ -54,7 +54,9 @@ public class App extends Application{
                 case "Sponsor":
                     stage.setScene(new Scene(new AppPane(MenuBarBuilder.sponsorMenu())));
                     break;
-            
+                case "Catering":
+                    stage.setScene(new Scene(new AppPane(MenuBarBuilder.cateringMenu())));
+                    break;
                 default:
                     break;
             }
@@ -68,6 +70,7 @@ public class App extends Application{
         fields.add("Sport");
         fields.add("Logistic");
         fields.add("C&A");
+        fields.add("Catering");
         fields.add("Sponsor");
     }
 }
