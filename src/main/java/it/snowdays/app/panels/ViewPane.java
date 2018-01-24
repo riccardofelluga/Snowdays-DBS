@@ -1,12 +1,16 @@
 package it.snowdays.app.panels;
 
 
+import it.snowdays.app.SQLFetcher;
 import it.snowdays.app.TableHandler;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -38,7 +42,13 @@ public class ViewPane extends VBox{
     }
     private class OptionsPane extends GridPane{
 
+        ChoiceBox<String> daySelector;
+        ChoiceBox<String> selector;
+
         public OptionsPane(){
+
+            daySelector = new ChoiceBox<>();
+            selector = new ChoiceBox<String>();
 
             setPadding(new Insets(10, 10, 10, 10));
             setHgap(10);
@@ -46,12 +56,12 @@ public class ViewPane extends VBox{
             TextField searchField = new TextField();
             setHgrow(searchField, Priority.ALWAYS);
 
-            ChoiceBox<String> daySelector = new ChoiceBox<>();
-            ChoiceBox<String> selector = new ChoiceBox<String>();
-    
-            selector.getItems().add(0, "Tab1");
-            selector.getItems().add(1, "Tab2");
-            selector.setValue("Tab1"); 
+            searchField.setOnKeyPressed(e -> {
+                if(e.getCode().equals(KeyCode.ENTER))
+                    search(searchField.getText(), selector.getValue());
+            });
+
+            populateSelector();
 
             daySelector.getItems().add("Day 1");
             daySelector.getItems().add("Day 2");
@@ -62,6 +72,65 @@ public class ViewPane extends VBox{
             addColumn(1, searchField);
             addColumn(2, selector);
 
+        }
+
+        private void search(String input, String tab){
+
+            if(input.equals("") || input.equals(null))
+                return;
+
+            ArrayList<ArrayList<String>> searchres = new ArrayList<ArrayList<String>>();
+
+            //firstly we get the nuber of the col selected
+            int t = 0, c = 0;
+            for (String s : SQLFetcher.getList().get(0)) {
+                if(s.equals(tab))
+                    c=t;
+                t++;
+            }
+
+            boolean first = true;
+
+            for (ArrayList<String> p : SQLFetcher.getList()) {
+               
+                if(p.get(c).toUpperCase().contains(input.toUpperCase())){
+                    
+                    if(first)//to avoid the cols to be shown in result
+                        first = false;
+                    else
+                        searchres.add(p);
+                }
+                    
+
+                
+            }
+
+            if(!searchres.isEmpty()){
+                //add first to keep the col names
+                searchres.add(0, SQLFetcher.getList().get(0));
+                TableHandler.getInstance().setTableView(searchres);
+                ViewPane.instance.setNewTable();
+            }else{
+                Alert a = new Alert(AlertType.WARNING);
+                a.setTitle("No results");
+                a.setHeaderText("No results found for " + input);
+                a.showAndWait();
+                //reset table
+                TableHandler.getInstance().setTableView(SQLFetcher.getList());
+                ViewPane.instance.setNewTable();
+            }
+            
+        }
+
+        private void populateSelector(){
+            boolean first = true;
+            for (String s : SQLFetcher.getList().get(0)) {
+                selector.getItems().add(s);
+                if(first){
+                    selector.setValue(s);
+                    first = false;
+                }
+            }
         }
     }
 

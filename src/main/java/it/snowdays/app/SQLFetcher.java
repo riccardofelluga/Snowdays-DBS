@@ -25,20 +25,20 @@ public class SQLFetcher {
     //"postgres";
     private static String password = "Montebello16";
             //"postgresql";
-    
+    private static ArrayList<ArrayList<String>> retrivedData;
+
     public static ArrayList<ArrayList<String>> getData(String query){
-    ArrayList<ArrayList<String>> retrivedData = new ArrayList<ArrayList<String>>();
+        retrivedData = new ArrayList<ArrayList<String>>();
 
-    Statement statement; 
-    ResultSet set;
-    boolean isHeaderParsed = false;
+        Statement statement; 
+        ResultSet set;
+        boolean isHeaderParsed = false;
     
-    try {
-            statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
-            set = statement.executeQuery(query);
-
-            ResultSetMetaData rsmd = set.getMetaData();
-            int colCount = rsmd.getColumnCount();
+     try {
+        statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
+        set = statement.executeQuery(query);
+             ResultSetMetaData rsmd = set.getMetaData();
+             int colCount = rsmd.getColumnCount();
             while (set.next()) {
 
                 ArrayList<String> item  = new ArrayList<String>();
@@ -66,6 +66,10 @@ public class SQLFetcher {
             a.setContentText(e.getMessage());
             a.showAndWait();
         }
+        return retrivedData;
+    }
+
+    public static ArrayList<ArrayList<String>> getList(){
         return retrivedData;
     }
     
