@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -21,20 +20,20 @@ public class EdibleMenu extends Menu{
 
         MenuItem manageBreakfast = new MenuItem("Manage breakfasts");
         manageBreakfast.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(breakfastQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(breakfastQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageLunch = new MenuItem("Manage lunch");
         manageBreakfast.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(lunchQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(lunchQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageDinner = new MenuItem("Manage dinner");
         manageBreakfast.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(dinnerQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(dinnerQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageBreakfast);

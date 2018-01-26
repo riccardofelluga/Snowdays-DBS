@@ -19,14 +19,12 @@ import javafx.util.Callback;
  */
 public class TableHandler {
 
-    static ArrayList<ArrayList<String>> data = null;
-
     private static TableHandler instance = new TableHandler();
     private static TableView<ArrayList<String>> table;
 
     private TableHandler() {
-        //here only for testing
-        data = SQLFetcher.getData("SELECT per.dj_name, per.start_hour, per.end_hour, ev.name, l.address FROM (((performance per RIGHT JOIN performed_at pat ON per.performance_id = pat.performance_id) LEFT JOIN event ev ON pat.event_id = ev.event_id) LEFT JOIN takes_place_at tpa ON ev.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id");
+        //load the first table
+        DataHandler.getInstance().loadRemote("SELECT * FROM participant"); 
     }
 
     public static TableHandler getInstance() {
@@ -41,12 +39,10 @@ public class TableHandler {
     USE THE HANDLER to modifi the right array
     */
 
-    public static void loadTable(){
 
-    }
+    public static TableView<ArrayList<String>> generateTable() {
 
-
-    public static TableView<ArrayList<String>> getCurrentTable() {
+        ArrayList<ArrayList<String>> data = DataHandler.getInstance().getLocal();
 
         table = new TableView<ArrayList<String>>();
         
@@ -54,9 +50,12 @@ public class TableHandler {
             return table;
 
         ObservableList<ArrayList<String>> inTableData = FXCollections.observableArrayList();
-        inTableData.addAll(data);
+
+        inTableData.addAll(DataHandler.getInstance().getLocal());
         inTableData.remove(0);
-        for(int i = 0; i<data.get(0).size(); i++){
+
+        //column names 
+        for(int i = 0; i<DataHandler.getInstance().getLocal().get(0).size(); i++){
             TableColumn<ArrayList<String>, String> tc = new TableColumn<ArrayList<String>, String>(data.get(0).get(i));
             final int c = i;
             Callback<CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>> cb = new Callback<CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>>() {
@@ -98,9 +97,5 @@ public class TableHandler {
         }
 
     };
-
-    public void setTableView(ArrayList<ArrayList<String>> inputDataSet) {
-        data = inputDataSet;
-    }
 
 }

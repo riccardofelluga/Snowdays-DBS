@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -18,8 +17,8 @@ public class HostsMenu extends Menu{
 
         MenuItem manageHosts= new MenuItem("Manage hosts");
         manageHosts.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(hostsQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(hostsQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageHosts);

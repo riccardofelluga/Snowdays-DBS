@@ -22,10 +22,10 @@ public class SQLFetcher {
     //"postgres";
     private static String password = "Montebello16";
             //"postgresql";
-    private static ArrayList<ArrayList<String>> retrivedData;
+    
 
     public static ArrayList<ArrayList<String>> getData(String query){
-        retrivedData = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> retrivedData = new ArrayList<ArrayList<String>>();
 
         Statement statement; 
         ResultSet set;
@@ -65,9 +65,4 @@ public class SQLFetcher {
         }
         return retrivedData;
     }
-
-    public static ArrayList<ArrayList<String>> getList(){
-        return retrivedData;
-    }
-    
 }

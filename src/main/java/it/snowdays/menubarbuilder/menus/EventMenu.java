@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -18,13 +17,13 @@ public class EventMenu extends Menu{
         super("Event");
         MenuItem manageEventLoc = new MenuItem("Manage locations");
         manageEventLoc.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(locQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(locQuery);
+            ViewPane.getInstance().updateView();
         });
         MenuItem manageDJ = new MenuItem("Playing DJs");
         manageDJ.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(dJQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(dJQuery);
+            ViewPane.getInstance().updateView();
         });
         getItems().add(manageEventLoc);
         getItems().add(manageDJ);

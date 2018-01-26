@@ -1,7 +1,7 @@
 package it.snowdays.app.panels;
 
 
-import it.snowdays.app.SQLFetcher;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.TableHandler;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -9,6 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
@@ -22,7 +23,7 @@ public class ViewPane extends VBox{
 
     private OptionsPane options = new OptionsPane();
     //private ObservableList tabContent; use it to have an always up-to-date list
-    private static TableView<ArrayList<String>> table = TableHandler.getCurrentTable();
+    private static TableView<ArrayList<String>> table = TableHandler.generateTable();
     
     private static ViewPane instance = new ViewPane();
 
@@ -35,19 +36,17 @@ public class ViewPane extends VBox{
         return instance;
     }
 
-    public void setNewTable(){
-        table = TableHandler.getCurrentTable();
-        
-        this.getChildren().set(1, table);
+    public void updateView(){
+        this.getChildren().set(1, TableHandler.generateTable());
+        options.populateSelector();
     }
+
     private class OptionsPane extends GridPane{
 
-        ChoiceBox<String> daySelector;
-        ChoiceBox<String> selector;
+        private ChoiceBox<String> selector = null;
 
         public OptionsPane(){
 
-            daySelector = new ChoiceBox<>();
             selector = new ChoiceBox<String>();
 
             setPadding(new Insets(10, 10, 10, 10));
@@ -62,13 +61,13 @@ public class ViewPane extends VBox{
             });
 
             populateSelector();
-
-            daySelector.getItems().add("Day 1");
-            daySelector.getItems().add("Day 2");
-            daySelector.getItems().add("Day 3");
-            daySelector.setValue("Day 1");
     
-            addColumn(0, daySelector);
+            Button addBtn = new Button("+");
+            addBtn.setOnAction(e -> {
+                //code for the add
+            });
+
+            addColumn(0, addBtn);
             addColumn(1, searchField);
             addColumn(2, selector);
 
@@ -83,7 +82,7 @@ public class ViewPane extends VBox{
 
             //firstly we get the nuber of the col selected
             int t = 0, c = 0;
-            for (String s : SQLFetcher.getList().get(0)) {
+            for (String s : DataHandler.getInstance().getLocal().get(0)) {
                 if(s.equals(tab))
                     c=t;
                 t++;
@@ -91,7 +90,7 @@ public class ViewPane extends VBox{
 
             boolean first = true;
 
-            for (ArrayList<String> p : SQLFetcher.getList()) {
+            for (ArrayList<String> p : DataHandler.getInstance().getLocal()) {
                
                 if(p.get(c).toUpperCase().contains(input.toUpperCase())){
                     
@@ -107,9 +106,9 @@ public class ViewPane extends VBox{
 
             if(!searchres.isEmpty()){
                 //add first to keep the col names
-                searchres.add(0, SQLFetcher.getList().get(0));
-                TableHandler.getInstance().setTableView(searchres);
-                ViewPane.instance.setNewTable();
+                searchres.add(0, DataHandler.getInstance().getLocal().get(0));
+                //TableHandler.getInstance().setTableView(searchres);
+                //ViewPane.instance.setNewTable();
                 
             }else{
                 Alert a = new Alert(AlertType.WARNING);
@@ -117,15 +116,16 @@ public class ViewPane extends VBox{
                 a.setHeaderText("No results found for " + input);
                 a.showAndWait();
                 //reset table
-                TableHandler.getInstance().setTableView(SQLFetcher.getList());
-                ViewPane.instance.setNewTable();
+                // TableHandler.getInstance().setTableView(SQLFetcher.getList());
+                // ViewPane.instance.setNewTable();
             }
             
         }
 
-        private void populateSelector(){
+        protected void populateSelector(){
+            selector.getItems().clear();
             boolean first = true;
-            for (String s : SQLFetcher.getList().get(0)) {
+            for (String s : DataHandler.getInstance().getLocal().get(0)) {
                 selector.getItems().add(s);
                 if(first){
                     selector.setValue(s);

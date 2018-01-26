@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -20,20 +19,20 @@ public class BaseCampMenu extends Menu{
 
         MenuItem manageSportStuff = new MenuItem("Sport stuff");
         manageSportStuff.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(sportStuffQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(sportStuffQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageCateringStuff = new MenuItem("Catering stuff");
         manageCateringStuff.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(cateringStuffQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(cateringStuffQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageLogisticStuff = new MenuItem("Logistic stuff");
         manageLogisticStuff.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(logisticStuffQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(logisticStuffQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageSportStuff);

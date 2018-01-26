@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -19,14 +18,14 @@ public class CompetesInMenu extends Menu {
 
         MenuItem manageTeams = new MenuItem("Manage teams");
         manageTeams.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(teamsQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(teamsQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageScoreboard = new MenuItem("Manage teams");
         manageScoreboard.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(scoreboardQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(scoreboardQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageTeams);

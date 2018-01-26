@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -20,8 +19,8 @@ public class TransportMenu extends Menu{
         
         MenuItem manageStops = new MenuItem("Manage stops");
         manageStops.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(stopsQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(stopsQuery);
+            ViewPane.getInstance().updateView();
         });
 
         // MenuItem manageBusPeople = new MenuItem("Manage people buses");
@@ -32,8 +31,8 @@ public class TransportMenu extends Menu{
 
         MenuItem manageStuffPayloads = new MenuItem("Manage stuff payloads");
         manageStuffPayloads.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(payloadQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(payloadQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageStops);

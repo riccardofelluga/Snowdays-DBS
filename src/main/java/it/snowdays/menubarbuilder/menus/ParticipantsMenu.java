@@ -1,7 +1,6 @@
 package it.snowdays.menubarbuilder.menus;
 
-import it.snowdays.app.SQLFetcher;
-import it.snowdays.app.TableHandler;
+import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -19,14 +18,14 @@ public class ParticipantsMenu extends Menu{
 
         MenuItem managePart = new MenuItem("Manage people");
         managePart.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(partQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(partQuery);
+            ViewPane.getInstance().updateView();
         });
 
         MenuItem manageUni = new MenuItem("Manage universities");
         manageUni.setOnAction(e -> {
-            TableHandler.getInstance().setTableView(SQLFetcher.getData(uniQuery));
-            ViewPane.getInstance().setNewTable();
+            DataHandler.getInstance().loadRemote(uniQuery);
+            ViewPane.getInstance().updateView();
         });
 
         getItems().add(managePart);
