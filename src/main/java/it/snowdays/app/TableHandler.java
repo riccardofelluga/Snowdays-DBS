@@ -26,7 +26,7 @@ public class TableHandler {
 
     private TableHandler() {
         //here only for testing
-        data = SQLFetcher.getData("SELECT per.dj_name, per.start_hour, per.end_hour,  l.name, l.address, e.theme FROM performance per RIGHT JOIN performed_at pat ON per.performance_id = pat.performance_id,	performed_at pa RIGHT JOIN event ev ON pa.event_id = ev.event_id, event e RIGHT JOIN takes_place_at p ON e.event_id = p.event_id, takes_place_at t RIGHT JOIN location l ON t.location_id = l.location_id WHERE e.type = 'party' ");
+        data = SQLFetcher.getData("SELECT per.dj_name, per.start_hour, per.end_hour, ev.name, l.address FROM (((performance per RIGHT JOIN performed_at pat ON per.performance_id = pat.performance_id) LEFT JOIN event ev ON pat.event_id = ev.event_id) LEFT JOIN takes_place_at tpa ON ev.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id");
     }
 
     public static TableHandler getInstance() {
@@ -40,6 +40,11 @@ public class TableHandler {
     edit/modify it into the original 
     USE THE HANDLER to modifi the right array
     */
+
+    public static void loadTable(){
+
+    }
+
 
     public static TableView<ArrayList<String>> getCurrentTable() {
 
