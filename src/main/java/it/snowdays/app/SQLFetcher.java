@@ -36,7 +36,7 @@ public class SQLFetcher {
         set = statement.executeQuery(query);
              ResultSetMetaData rsmd = set.getMetaData();
              int colCount = rsmd.getColumnCount();
-            while (set.next()) {
+             do{
 
                 ArrayList<String> item  = new ArrayList<String>();
                 
@@ -54,7 +54,7 @@ public class SQLFetcher {
 
                 retrivedData.add(item);
                 
-            }
+            }while (set.next());
 
 		} catch (SQLException e) {
 			Alert a = new Alert(AlertType.INFORMATION);
