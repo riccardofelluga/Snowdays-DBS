@@ -56,6 +56,7 @@ public class ViewPane extends VBox{
 
             TextField searchField = new TextField();
             setHgrow(searchField, Priority.ALWAYS);
+            setStyle("-fx-background-color: #87cefa");    
 
             searchField.setOnKeyPressed(e -> {
                 if(e.getCode().equals(KeyCode.ENTER))//trigger only if enter is pressed
