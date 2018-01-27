@@ -21,7 +21,8 @@ public class MenuBarBuilder extends MenuBar{
         mb.getMenus().add(new ParticipantsMenu());
         mb.getMenus().add(new AccomodationsMenu());
         mb.getMenus().add(new HostsMenu());
-        mb.setStyle("-fx-selection-bar: #4682b4;");
+
+        mb.setStyle("-fx-selection-bar: #b0c4de;");
         mb.setStyle("-fx-background-color: #b0c4de;");
 
         return mb;

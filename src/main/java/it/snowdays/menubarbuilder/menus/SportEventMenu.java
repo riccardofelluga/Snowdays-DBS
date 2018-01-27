@@ -49,7 +49,6 @@ public class SportEventMenu extends Menu{
         MenuItem scoreboardTeam = new MenuItem("Team Sports Scoreboard");
         scoreboardTeam.setOnAction(e -> {
             String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN clashes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
-            System.out.println(ID);
             DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC");
             ViewPane.getInstance().updateView();
         });
