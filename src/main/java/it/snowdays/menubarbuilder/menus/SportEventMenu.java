@@ -60,7 +60,7 @@ public class SportEventMenu extends Menu{
         getItems().add(manageSportStaff);
     }
 
-    private int getSBID(){
+    private String getSBID(){
 
         String sbName;
 
