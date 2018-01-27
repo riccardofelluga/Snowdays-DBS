@@ -1,8 +1,9 @@
 package it.snowdays.menubarbuilder.menus;
 
-import java.util.HashMap;
-
+import java.util.ArrayList;
+import java.util.Optional;
 import it.snowdays.app.DataHandler;
+import it.snowdays.app.SQLFetcher;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Menu;
@@ -34,7 +35,7 @@ public class SportEventMenu extends Menu{
         MenuItem scoreboard = new MenuItem("Scoreboard");
         scoreboard.setOnAction(e -> {
             String ID = getSBID();
-            DataHandler.getInstance().loadRemote("SELECT * FROM " + ID);
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = "+ ID + " ORDER BY placement ASC");
             ViewPane.getInstance().updateView();
         });
 
@@ -45,18 +46,35 @@ public class SportEventMenu extends Menu{
 
     private String getSBID(){
 
-        HashMap<String, String> sKeys  = new HashMap<String, String>();
-        sKeys.put("", "");//insert here the mapping
+        String sbName;
 
         ChoiceDialog<String> d = new ChoiceDialog<String>();
         d.setTitle("Choose scoreboard...");
         d.setHeaderText("Choose the scoreboard you want to see");
-        d.setContentText("Scoreboard: ");
-        d.getItems().addAll(sKeys.values());
-        //d.setSelectedItem(""); //set the default selection!
+        d.setContentText("Scoreboard of: ");
+        
+        boolean first = true, second = true;
+        for (ArrayList<String> t : SQLFetcher.getData("SELECT description FROM sport_event")) {
+            if(first){
+                first = false;//do not include header
+            }else if (second){
+                second = false;
+                d.getItems().add(t.get(0));
+                d.setSelectedItem(t.get(0));//set the first element as selected def value
+            }
+            else{
+                d.getItems().add(t.get(0));
+            }
+        }
 
-        d.showAndWait();
+        Optional<String> result = d.showAndWait();
 
-        return "staff"; // returns the id of the table
+        if(result.isPresent()){
+            sbName = result.get();
+        }else{
+            sbName = d.getItems().get(0); // returns the id of the default table
+        }
+
+        return SQLFetcher.getData("SELECT sport_event_id FROM sport_event WHERE description = '" + sbName + "'").get(0).get(0);
     }
 }

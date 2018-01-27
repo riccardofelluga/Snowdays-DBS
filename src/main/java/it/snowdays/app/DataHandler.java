@@ -36,5 +36,8 @@ public class DataHandler {
         return data;
     }
 
+    public void resetLocal(){
+        tmpData = data;
+    }
 
 }

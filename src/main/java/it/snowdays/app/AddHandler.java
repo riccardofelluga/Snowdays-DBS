@@ -8,11 +8,15 @@ import javafx.scene.layout.GridPane;
  */ 
 
 public class AddHandler {
+    
+    private Dialog<String> d;
 
     public AddHandler(){
-        Dialog<String> d = new Dialog<>();
-
+        d = new Dialog<>();
         GridPane grid = new GridPane();
     } 
-    
+    private GridPane setUI(){
+        GridPane grid = new GridPane();
+        return grid;
+    }
 }

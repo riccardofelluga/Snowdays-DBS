@@ -71,7 +71,7 @@ public class ViewPane extends VBox{
             Button rstButton = new Button("X");
             rstButton.setOnAction(e -> {
                 //set back the dataset to default
-                DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
+                DataHandler.getInstance().resetLocal();
                 ViewPane.getInstance().updateView();
             });
 
@@ -88,7 +88,7 @@ public class ViewPane extends VBox{
                 return;
 
             //reset before search!
-            DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
+            DataHandler.getInstance().resetLocal();
 
             ArrayList<ArrayList<String>> searchres = new ArrayList<ArrayList<String>>();
 
@@ -125,7 +125,7 @@ public class ViewPane extends VBox{
                 a.setHeaderText("No results found for " + input);
                 a.showAndWait();
                 //reset table
-                DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
+                DataHandler.getInstance().resetLocal();
                 ViewPane.getInstance().updateView();
             }
             
@@ -144,14 +144,16 @@ public class ViewPane extends VBox{
 
             if(!nextSelector.equals(prevSelector)){ //if diffrent headers change selector
                 selector.getItems().clear();
-                boolean first = true;
-                for (String s : DataHandler.getInstance().getLocal().get(0)) {
-                    selector.getItems().add(s);
-                    if(first){
-                        selector.setValue(s);
-                        first = false;
+                if(DataHandler.getInstance().getLocal().size() != 0 ){
+                    boolean first = true;
+                    for (String s : DataHandler.getInstance().getLocal().get(0)) {
+                        selector.getItems().add(s);
+                        if(first){
+                            selector.setValue(s);
+                            first = false;
+                        }
                     }
-                }
+                }   
             }
         }
     }
