@@ -34,17 +34,18 @@ public class SportEventMenu extends Menu{
 
         MenuItem scoreboard = new MenuItem("Scoreboard");
         scoreboard.setOnAction(e -> {
-            String ID = getSBID();
+            String ID = getSBID("");//query here to fetch description
             DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = "+ ID + " ORDER BY placement ASC");
             ViewPane.getInstance().updateView();
         });
 
+        
         getItems().add(scoreboard);
         getItems().add(manageSportLocations);
         getItems().add(manageSportStaff);
     }
 
-    private String getSBID(){
+    private String getSBID(String query){
 
         String sbName;
 
@@ -54,7 +55,7 @@ public class SportEventMenu extends Menu{
         d.setContentText("Scoreboard of: ");
         
         boolean first = true, second = true;
-        for (ArrayList<String> t : SQLFetcher.getData("SELECT description FROM sport_event")) {
+        for (ArrayList<String> t : SQLFetcher.getData(query)) {
             if(first){
                 first = false;//do not include header
             }else if (second){
