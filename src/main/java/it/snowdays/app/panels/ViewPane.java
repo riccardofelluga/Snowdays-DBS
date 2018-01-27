@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -56,7 +58,6 @@ public class ViewPane extends VBox{
 
             TextField searchField = new TextField();
             setHgrow(searchField, Priority.ALWAYS);
-            setStyle("-fx-background-color: #87cefa");    
 
             searchField.setOnKeyPressed(e -> {
                 if(e.getCode().equals(KeyCode.ENTER))//trigger only if enter is pressed
@@ -67,7 +68,9 @@ public class ViewPane extends VBox{
     
             Button addBtn = new Button("+");
             addBtn.setOnAction(e -> {
-                new AddHandler();
+                AddHandler.promptAdd();
+                DataHandler.getInstance().reloadRemote();//fetch again the DB
+                updateView();
             });
 
             Button rstButton = new Button("X");
@@ -78,6 +81,11 @@ public class ViewPane extends VBox{
                 ViewPane.getInstance().updateView();
             });
 
+
+            //syling
+            setStyle("-fx-background-color: #87cefa");    
+            //addBtn.setGraphic(new ImageView("./main/java/it/snowdays/app/icons/refresh.png"));
+
             addColumn(0, addBtn);
             addColumn(1, searchField);
             addColumn(2, selector);
@@ -87,8 +95,11 @@ public class ViewPane extends VBox{
 
         private void search(String input, String tab){
 
-            if(input.equals("") || input.equals(null))
+            if(input.equals("") || input.equals(null)){
+                DataHandler.getInstance().resetLocal();
+                ViewPane.getInstance().updateView();
                 return;
+            }
 
             //reset before search!
             DataHandler.getInstance().resetLocal();
