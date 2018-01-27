@@ -5,7 +5,6 @@ import it.snowdays.app.DataHandler;
 import it.snowdays.app.TableHandler;
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -133,11 +132,15 @@ public class ViewPane extends VBox{
         }
 
         protected void populateSelector(){
+
             ArrayList<String> prevSelector = new ArrayList<String>();
-            for (String t : selector.getItems()) {
-                prevSelector.add(t);
+            ArrayList<String> nextSelector = (DataHandler.getInstance().getLocal().size()!= 0)? DataHandler.getInstance().getLocal().get(0): new ArrayList<String>();
+
+            if (selector.getItems().size() != 0){
+                for (String t : selector.getItems()) {
+                    prevSelector.add(t);
+                }
             }
-            ArrayList<String> nextSelector = DataHandler.getInstance().getLocal().get(0);
 
             if(!nextSelector.equals(prevSelector)){ //if diffrent headers change selector
                 selector.getItems().clear();

@@ -11,7 +11,6 @@ import javafx.scene.control.MenuItem;
 public class AccomodationsMenu extends Menu{
 
     private String locQuery = "";
-    private String assignQuery = "";
 
     public AccomodationsMenu(){
         super("Accomodations");
@@ -22,14 +21,14 @@ public class AccomodationsMenu extends Menu{
             ViewPane.getInstance().updateView();
         });
 
-        MenuItem assignParticipant= new MenuItem("Assign participants");
-        assignParticipant.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(assignQuery);
-            ViewPane.getInstance().updateView();
-        });
+        // MenuItem assignParticipant= new MenuItem("Assign participants");
+        // assignParticipant.setOnAction(e -> {
+        //     DataHandler.getInstance().loadRemote(assignQuery);
+        //     ViewPane.getInstance().updateView();
+        // });
 
         getItems().add(manageAccLoc);
-        getItems().add(assignParticipant);
+        // getItems().add(assignParticipant);
 
     }
     
