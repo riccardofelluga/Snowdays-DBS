@@ -7,7 +7,8 @@ import java.util.ArrayList;
  */
 public class DataHandler {
 
-    static ArrayList<ArrayList<String>> data = null;
+    private ArrayList<ArrayList<String>> data = null;
+    private ArrayList<ArrayList<String>> tmpData = null;
     
     private DataHandler(){}
 
@@ -19,14 +20,21 @@ public class DataHandler {
     
     public ArrayList<ArrayList<String>> loadRemote(String query){
         data = SQLFetcher.getData(query);
+        tmpData = data;
         return data;
     }
 
     public ArrayList<ArrayList<String>> getLocal(){
-        return data;
+        return tmpData;
+    }
+    
+    public void setLocal(ArrayList<ArrayList<String>> d){
+        tmpData = d;
     }
 
-    
+    public ArrayList<ArrayList<String>> getFullDataset(){
+        return data;
+    }
 
 
 }

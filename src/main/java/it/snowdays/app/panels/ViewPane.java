@@ -4,6 +4,8 @@ package it.snowdays.app.panels;
 import it.snowdays.app.DataHandler;
 import it.snowdays.app.TableHandler;
 import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -67,9 +69,17 @@ public class ViewPane extends VBox{
                 //code for the add
             });
 
+            Button rstButton = new Button("X");
+            rstButton.setOnAction(e -> {
+                //set back the dataset to default
+                DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
+                ViewPane.getInstance().updateView();
+            });
+
             addColumn(0, addBtn);
             addColumn(1, searchField);
             addColumn(2, selector);
+            addColumn(3, rstButton);
 
         }
 
@@ -77,6 +87,9 @@ public class ViewPane extends VBox{
 
             if(input.equals("") || input.equals(null))
                 return;
+
+            //reset before search!
+            DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
 
             ArrayList<ArrayList<String>> searchres = new ArrayList<ArrayList<String>>();
 
@@ -92,23 +105,20 @@ public class ViewPane extends VBox{
 
             for (ArrayList<String> p : DataHandler.getInstance().getLocal()) {
                
-                if(p.get(c).toUpperCase().contains(input.toUpperCase())){
-                    
-                    if(first)//to avoid the cols names to be shown in result
-                        first = false;
-                    else
+                if(first){//to avoid the cols names to be shown in result
+                    first = false;
+                } else {
+                    if(p.get(c).toUpperCase().contains(input.toUpperCase())){
                         searchres.add(p);
+                    }     
                 }
-                    
-
-                
             }
 
             if(!searchres.isEmpty()){
                 //add first to keep the col names
                 searchres.add(0, DataHandler.getInstance().getLocal().get(0));
-                //TableHandler.getInstance().setTableView(searchres);
-                //ViewPane.instance.setNewTable();
+                DataHandler.getInstance().setLocal(searchres);
+                ViewPane.getInstance().updateView();
                 
             }else{
                 Alert a = new Alert(AlertType.WARNING);
@@ -116,24 +126,31 @@ public class ViewPane extends VBox{
                 a.setHeaderText("No results found for " + input);
                 a.showAndWait();
                 //reset table
-                // TableHandler.getInstance().setTableView(SQLFetcher.getList());
-                // ViewPane.instance.setNewTable();
+                DataHandler.getInstance().setLocal(DataHandler.getInstance().getFullDataset());
+                ViewPane.getInstance().updateView();
             }
             
         }
 
         protected void populateSelector(){
-            selector.getItems().clear();
-            boolean first = true;
-            for (String s : DataHandler.getInstance().getLocal().get(0)) {
-                selector.getItems().add(s);
-                if(first){
-                    selector.setValue(s);
-                    first = false;
+            ArrayList<String> prevSelector = new ArrayList<String>();
+            for (String t : selector.getItems()) {
+                prevSelector.add(t);
+            }
+            ArrayList<String> nextSelector = DataHandler.getInstance().getLocal().get(0);
+
+            if(!nextSelector.equals(prevSelector)){ //if diffrent headers change selector
+                selector.getItems().clear();
+                boolean first = true;
+                for (String s : DataHandler.getInstance().getLocal().get(0)) {
+                    selector.getItems().add(s);
+                    if(first){
+                        selector.setValue(s);
+                        first = false;
+                    }
                 }
             }
         }
     }
-
 }
 
