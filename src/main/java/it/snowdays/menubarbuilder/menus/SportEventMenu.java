@@ -14,8 +14,24 @@ import javafx.scene.control.MenuItem;
  */
 public class SportEventMenu extends Menu{
 
-    private String locQuery = "";
-    private String staffQuery = "";
+    private String locQuery = "SELECT se.description, l.address, l.name " + 
+                                " FROM (sport_event se LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id)" +
+                                " LEFT JOIN location l ON ipa.location_id = l.location_id";
+    
+    private String staffQuery = "SELECT p.name, p.surname, se.description AS sport_event, l.address AS location " +
+                                " FROM (((staff s LEFT JOIN participant p ON s.stud_id = p.stud_id) " +
+                                " RIGHT JOIN put_together pt ON pt.stud_id = s.stud_id " +
+                                " LEFT JOIN sport_event se ON pt.sport_event_id = se.sport_event_id) " +
+                                " LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id) " +
+                                " LEFT JOIN location l ON ipa.location_id = l.location_id";
+    
+    private int sportEventId;
+    private String competition;
+    private String retrieveId = "SELECT se.sport_event_id FROM sport_event se WHERE se.description = \'" + competition + "\'";
+
+    private String scoreboardSingle = "SELECT ci.placement, p.name, p.surname, p.university " +
+                                        " FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id " +
+                                        " WHERE sport_event_id = " + sportEventId + " ORDER BY placement ASC";
     
     public SportEventMenu(){
         super("Sport Events");
