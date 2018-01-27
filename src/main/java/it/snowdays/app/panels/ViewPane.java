@@ -1,6 +1,7 @@
 package it.snowdays.app.panels;
 
 
+import it.snowdays.app.AddHandler;
 import it.snowdays.app.DataHandler;
 import it.snowdays.app.TableHandler;
 import java.util.ArrayList;
@@ -65,12 +66,13 @@ public class ViewPane extends VBox{
     
             Button addBtn = new Button("+");
             addBtn.setOnAction(e -> {
-                //code for the add
+                new AddHandler();
             });
 
             Button rstButton = new Button("X");
             rstButton.setOnAction(e -> {
                 //set back the dataset to default
+                searchField.clear();
                 DataHandler.getInstance().resetLocal();
                 ViewPane.getInstance().updateView();
             });
