@@ -23,16 +23,7 @@ public class SportEventMenu extends Menu{
                                 " RIGHT JOIN put_together pt ON pt.stud_id = s.stud_id " +
                                 " LEFT JOIN sport_event se ON pt.sport_event_id = se.sport_event_id) " +
                                 " LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id) " +
-                                " LEFT JOIN location l ON ipa.location_id = l.location_id";
-    
-    private int sportEventId;
-    private String competition;
-    private String retrieveId = "SELECT se.sport_event_id FROM sport_event se WHERE se.description = \'" + competition + "\'";
-
-    private String scoreboardSingle = "SELECT ci.placement, p.name, p.surname, p.university " +
-                                        " FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id " +
-                                        " WHERE sport_event_id = " + sportEventId + " ORDER BY placement ASC";
-    
+                                " LEFT JOIN location l ON ipa.location_id = l.location_id";                       
     public SportEventMenu(){
         super("Sport Events");
 
