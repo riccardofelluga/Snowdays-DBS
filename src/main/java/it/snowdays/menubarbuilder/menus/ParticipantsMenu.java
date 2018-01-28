@@ -10,8 +10,8 @@ import javafx.scene.control.MenuItem;
  */
 public class ParticipantsMenu extends Menu{
 
-    private String partQuery = "";
-    private String uniQuery = "";
+    private String partQuery = "SELECT * FROM participant";
+    private String uniQuery = "SELECT p.university, count(p.university) as quantity FROM participant p GROUP BY p.university";
 
     public ParticipantsMenu(){
         super("Participants");

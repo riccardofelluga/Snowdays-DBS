@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
  */
 public class CompetesInMenu extends Menu {
 
-    private String teamsQuery = "";
+    private String teamsQuery = "SELECT t.team_id, t.name, se.description FROM (team t LEFT JOIN clashes_in ci ON t.team_id = ci.team_id) LEFT JOIN sport_event se ON ci.sport_event_id = se.sport_event_id";
     private String scoreboardQuery = "";
 
     public CompetesInMenu(){
