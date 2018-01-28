@@ -98,7 +98,7 @@ public class TableHandler {
                     setGraphic(delBtn);
                     setAlignment(Pos.CENTER);
                     delBtn.setOnAction(e->{
-                        //MODIFY HERE TO SET DELETE
+                        //SET DELETE
                         DeleteHandler d = new DeleteHandler();
                         d.deleteRemote(id);    
                     });
@@ -124,7 +124,9 @@ public class TableHandler {
 
             event.getTableView().getItems().set(tRow, tuple);
 
-            //MODIFY HERE TO SET UPDATE
+            //SET UPDATE
+            UpdateHandler u = new UpdateHandler();
+            u.updateRemote(event.getTableView().getItems().get(tRow).get(0), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue());
             
         }
 

@@ -1,5 +1,6 @@
 package it.snowdays.app;
 
+import it.snowdays.app.panels.ViewPane;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -15,12 +16,12 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class SQLFetcher {
 
-    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/postgres";
+    private static final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";//"jdbc:postgresql://93.46.114.82:1995/postgres";
     //jdbc:postgresql://localhost:5432/postgres
     //private static Connection connection;
-    private static String username = "3lgrindero";
+    private static String username = "riccardo";//"3lgrindero";
     //"postgres";
-    private static String password = "Montebello16";
+    private static String password = "";
             //"postgresql";
     
 
@@ -77,6 +78,9 @@ public class SQLFetcher {
             a.setHeaderText(e.getSQLState());
             a.setContentText(e.getMessage());
             a.showAndWait();
+
+            DataHandler.getInstance().reloadRemote();
+            ViewPane.getInstance().updateView();//refresh
             }
         }
 

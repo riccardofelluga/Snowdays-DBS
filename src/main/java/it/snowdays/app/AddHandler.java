@@ -1,6 +1,7 @@
 package it.snowdays.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -19,6 +20,8 @@ import javafx.scene.layout.GridPane;
 public class AddHandler {
     
     private static Dialog<ButtonType> d;
+
+    private static HashMap<String, ArrayList<String>> queryMap;
 
     private static ArrayList<String> collectedData;
 
@@ -86,7 +89,23 @@ public class AddHandler {
     private static boolean insertRemote(){
         if(collectedData == null)
             return false;
+        
+        populateMap();
+
+        for (String q : queryMap.get(DataHandler.getInstance().getTableName())) {
+            SQLFetcher.nonSelectQuery(q + "(" +  + ")");
+        }
+        
         return false;
-        //BRAINSTORMING NEEDED
+        
+    }
+
+    private static void populateMap(){
+        queryMap = new HashMap<String, ArrayList<String>>();
+
+        ArrayList<String> participant = new ArrayList<String>();
+        participant.add("INSERT INTO participant(stud_id, name, surname) VALUES ");
+        participant.add("INSERT INTO staff(stud_id, role)");
+        queryMap.put("participant", participant);
     }
 }
