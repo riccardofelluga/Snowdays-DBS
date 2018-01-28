@@ -20,15 +20,16 @@ public class DataHandler {
         return instance;
     }
     
-    public ArrayList<ArrayList<String>> loadRemote(String query){
+    public ArrayList<ArrayList<String>> loadRemote(String query, String tableName){
         data = SQLFetcher.getData(query);
         this.query = query;
+        this.tableName = tableName;
         tmpData = data;
         return data;
     }
 
     public ArrayList<ArrayList<String>> reloadRemote(){
-        return this.loadRemote(this.query);
+        return this.loadRemote(this.query, this.tableName);
     }
 
     public ArrayList<ArrayList<String>> getLocal(){

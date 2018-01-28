@@ -18,13 +18,13 @@ public class CompetesInMenu extends Menu {
 
         MenuItem manageTeams = new MenuItem("Manage teams");
         manageTeams.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(teamsQuery);
+            DataHandler.getInstance().loadRemote(teamsQuery, "");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageScoreboard = new MenuItem("Manage teams");
         manageScoreboard.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(scoreboardQuery);
+            DataHandler.getInstance().loadRemote(scoreboardQuery, "");
             ViewPane.getInstance().updateView();
         });
 

@@ -34,27 +34,24 @@ public class SQLFetcher {
      try {
         statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
         set = statement.executeQuery(query);
-             ResultSetMetaData rsmd = set.getMetaData();
-             int colCount = rsmd.getColumnCount();
-             do{
+        ResultSetMetaData rsmd = set.getMetaData();
+        int colCount = rsmd.getColumnCount();
+        do{
 
-                ArrayList<String> item  = new ArrayList<String>();
-                
-
-                if(!isHeaderParsed){
-                    for(int i = 1; i <= colCount; i++ ){
-                        item.add(rsmd.getColumnName(i));
-                    }
-                    isHeaderParsed = true;
-                } else{
-                    for(int i = 1; i <= colCount; i++){
-                        item.add(set.getString(i));
-                    }
+            ArrayList<String> item  = new ArrayList<String>();
+            
+            if(!isHeaderParsed){
+                for(int i = 1; i <= colCount; i++ ){
+                    item.add(rsmd.getColumnName(i));
                 }
-
-                retrivedData.add(item);
-                
-            }while (set.next());
+                isHeaderParsed = true;
+            } else{
+                for(int i = 1; i <= colCount; i++){
+                    item.add(set.getString(i));
+                }
+            }
+            retrivedData.add(item);    
+        }while (set.next());
 
 		} catch (SQLException e) {
 			Alert a = new Alert(AlertType.INFORMATION);
@@ -64,5 +61,22 @@ public class SQLFetcher {
             a.showAndWait();
         }
         return retrivedData;
+    }
+
+    public static void nonSelectQuery(String query){
+        Statement statement; 
+        ResultSet set;
+        try {
+            statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
+            set = statement.executeQuery(query);
+            System.out.println("query fired!");
+        } catch(SQLException e) {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("SQL error");
+            a.setHeaderText(e.getSQLState());
+            a.setContentText(e.getMessage());
+            a.showAndWait();
+        }
+
     }
 }

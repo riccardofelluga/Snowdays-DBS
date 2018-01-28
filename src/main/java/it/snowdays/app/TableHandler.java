@@ -28,7 +28,7 @@ public class TableHandler {
 
     private TableHandler() {
         //load the first table
-        DataHandler.getInstance().loadRemote("SELECT * FROM participant"); 
+        DataHandler.getInstance().loadRemote("SELECT * FROM participant", ""); 
     }
 
     public static TableHandler getInstance() {
@@ -87,10 +87,10 @@ public class TableHandler {
             delCol.setCellFactory(param -> new TableCell<ArrayList<String>, String>(){
                 private final Button delBtn = new Button("X");
                 @Override
-                protected void updateItem(String text, boolean empty){
-                    super.updateItem(text, empty);
+                protected void updateItem(String id, boolean empty){
+                    super.updateItem(id, empty);
 
-                    if(text == null){
+                    if(id == null){
                         setGraphic(null);
                         return;
                     }
@@ -99,7 +99,8 @@ public class TableHandler {
                     setAlignment(Pos.CENTER);
                     delBtn.setOnAction(e->{
                         //MODIFY HERE TO SET DELETE
-                        System.out.println(text);
+                        DeleteHandler d = new DeleteHandler();
+                        d.deleteRemote(id);    
                     });
                 }
             });

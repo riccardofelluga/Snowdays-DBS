@@ -19,19 +19,19 @@ public class BaseCampMenu extends Menu{
 
         MenuItem manageSportStuff = new MenuItem("Sport stuff");
         manageSportStuff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(sportStuffQuery);
+            DataHandler.getInstance().loadRemote(sportStuffQuery, "");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageCateringStuff = new MenuItem("Catering stuff");
         manageCateringStuff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(cateringStuffQuery);
+            DataHandler.getInstance().loadRemote(cateringStuffQuery, "");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageLogisticStuff = new MenuItem("Logistic stuff");
         manageLogisticStuff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(logisticStuffQuery);
+            DataHandler.getInstance().loadRemote(logisticStuffQuery, "");
             ViewPane.getInstance().updateView();
         });
 
