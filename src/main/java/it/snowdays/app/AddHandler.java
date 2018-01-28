@@ -2,8 +2,6 @@ package it.snowdays.app;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
-import javax.sound.sampled.BooleanControl;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -20,7 +18,7 @@ import javafx.scene.layout.GridPane;
 
 public class AddHandler {
     
-    private static Dialog<String> d;
+    private static Dialog<ButtonType> d;
 
     private static ArrayList<String> collectedData;
 
@@ -65,22 +63,24 @@ public class AddHandler {
         d.setTitle("Add...");
         d.getDialogPane().setContent(grid);
 
-        Optional<String> o = d.showAndWait();
+        Optional<ButtonType> o = d.showAndWait();
 
-        if(o.isPresent()){
+        if(o.get() == addBtnType){
             for (TextField t : fields) {       
                 collectedData.add(t.getText());
             }
+
+            if(insertRemote()){
+                return;
+            }else{
+                //error message
+                Alert a = new Alert(AlertType.ERROR);
+                a.setTitle("Unable to insert");
+                a.showAndWait();
+            }
         }
         
-        if(insertRemote()){
-            return;
-        }else{
-            //error message
-            Alert a = new Alert(AlertType.ERROR);
-            a.setTitle("Unable to insert");
-            a.showAndWait();
-        }
+       
     }
 
     private static boolean insertRemote(){

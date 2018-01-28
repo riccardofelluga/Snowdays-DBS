@@ -13,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -41,7 +39,9 @@ public class ViewPane extends VBox{
     }
 
     public void updateView(){
-        this.getChildren().set(1, TableHandler.generateTable());
+        table = TableHandler.generateTable();
+        getChildren().set(1, table);
+        setVgrow(table, Priority.ALWAYS);
         options.populateSelector();
     }
 
@@ -84,7 +84,7 @@ public class ViewPane extends VBox{
 
             //syling
             setStyle("-fx-background-color: #87cefa");    
-            //addBtn.setGraphic(new ImageView("./main/java/it/snowdays/app/icons/refresh.png"));
+            
 
             addColumn(0, addBtn);
             addColumn(1, searchField);
