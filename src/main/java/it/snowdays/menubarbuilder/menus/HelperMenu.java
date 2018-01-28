@@ -25,7 +25,7 @@ public class HelperMenu extends Menu{
 
         MenuItem managePersons = new MenuItem("Manage personnel");
         managePersons.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(personsQuery, "ManageHelper");
+            DataHandler.getInstance().loadRemote(personsQuery, "participant");
             ViewPane.getInstance().updateView();
         });
 

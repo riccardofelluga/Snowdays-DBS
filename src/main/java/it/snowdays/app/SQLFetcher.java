@@ -71,11 +71,13 @@ public class SQLFetcher {
             set = statement.executeQuery(query);
             System.out.println("query fired!");
         } catch(SQLException e) {
+            if(!e.getSQLState().equals("02000")){
             Alert a = new Alert(AlertType.INFORMATION);
             a.setTitle("SQL error");
             a.setHeaderText(e.getSQLState());
             a.setContentText(e.getMessage());
             a.showAndWait();
+            }
         }
 
     }
