@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class SQLFetcher {
 
-    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/postgres";
+    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/snowddays";
     //jdbc:postgresql://localhost:5432/postgres
     //private static Connection connection;
     private static String username = "app";
