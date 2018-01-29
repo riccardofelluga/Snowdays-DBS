@@ -22,9 +22,9 @@ public class ParticipantsMenu extends Menu{
             ViewPane.getInstance().updateView();
         });
 
-        MenuItem manageUni = new MenuItem("Manage universities");
+        MenuItem manageUni = new MenuItem("See universities stats");
         manageUni.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(uniQuery, "manageUniversities");
+            DataHandler.getInstance().loadRemote(uniQuery, "manageUniversities", true);
             ViewPane.getInstance().updateView();
         });
 

@@ -162,10 +162,9 @@ public class AddHandler {
         return r1 && r2;
     }
     private static boolean insertInManageLocationsAccommodation(){
-        boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id) VALUES ('" + collectedData.get(4) + "')");
-        return r1 && r2;
+        boolean r1;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number ,location_id) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "', '" + collectedData.get(5) +  "' )");
+        return r1;
     }
     private static boolean insertInManageHosts(){
         boolean r1, r2;
