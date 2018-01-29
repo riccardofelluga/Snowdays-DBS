@@ -125,10 +125,13 @@ public class TableHandler {
 
             //SET UPDATE
             UpdateHandler u = new UpdateHandler();
-            if(tCol == 0)
+            if(DataHandler.getInstance().getTableName().equals("sponsorshipStaff"))
+                //u.
+            else if(tCol == 0)
                 u.updateRemote(event.getOldValue(), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue());
             else
                 u.updateRemote(event.getTableView().getItems().get(tRow).get(0), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue());
+            
 
             ArrayList<String> tuple = event.getTableView().getItems().get(tRow);
             tuple.set(tCol, event.getNewValue());
