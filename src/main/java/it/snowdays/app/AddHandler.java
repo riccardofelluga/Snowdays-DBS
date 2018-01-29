@@ -89,15 +89,14 @@ public class AddHandler {
         
         switch (DataHandler.getInstance().getTableName()) {
             case "participant":
-                insertParticipant();
-                break;
+                return insertParticipant();
 
             case "manageStops":
-                insertStop();
+                insertStop();//CHANGE HERE
                 break;
 
             case "manageStuffPayloads":
-                insertStuffPayload();
+                insertStuffPayload();//CHANGE HERE
                 break;
             case"accommodationLocation":
                 insertInManageLocations();
@@ -122,12 +121,14 @@ public class AddHandler {
             r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + (Integer.parseInt(collectedData.get(0))+i) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         return r1;
     }
+    //CHANGE HERE
     private static boolean insertStop(){ //insert for stop & transport table
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
         return r1 && r2;
     }
+    //CHANGE HERE
     private static boolean insertStuffPayload(){ // insert for base camp thing & transport table
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
