@@ -11,6 +11,7 @@ public class DataHandler {
     private ArrayList<ArrayList<String>> tmpData = null;
     private String tableName = ""; 
     private String query = "";
+    private boolean readOnly = false;
     
     private DataHandler(){}
 
@@ -21,11 +22,18 @@ public class DataHandler {
     }
     
     public ArrayList<ArrayList<String>> loadRemote(String query, String tableName){
+        readOnly = false;
         data = SQLFetcher.getData(query);
         this.query = query;
         this.tableName = tableName;
         tmpData = data;
         return data;
+    }
+    //overloading!!!
+    public ArrayList<ArrayList<String>> loadRemote(String query, String tableName, boolean readOnly){
+        ArrayList<ArrayList<String>> d = loadRemote(query, tableName);
+        this.readOnly = readOnly;
+        return d;
     }
 
     public ArrayList<ArrayList<String>> reloadRemote(){
@@ -58,5 +66,9 @@ public class DataHandler {
 
     public void setTableName(String name){
         this.tableName = name;
+    }
+
+    public boolean isReadOnly(){
+        return readOnly;
     }
 }

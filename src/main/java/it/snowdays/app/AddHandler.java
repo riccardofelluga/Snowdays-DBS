@@ -145,7 +145,7 @@ public class AddHandler {
     }
     private static boolean insertInManageLocationsAccommodation(){
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id) VALUES ('" + collectedData.get(4) + "')");
         return r1 && r2;
     }
@@ -155,10 +155,60 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(name) VALUES ('" + collectedData.get(1) + "')");
         return r1 && r2;
     }
+
+    private static boolean insertPlayingDJs(){
+        boolean r1, r2, r3;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO performance(performance_id, dj_name, capacity, start_hour, end_hour) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO event(name) VALUES ('" + collectedData.get(4) + "')");
+        r3 = SQLFetcher.nonSelectQuery("INSERT INTO location(address) VALUES ('" + collectedData.get(5) + "')");
+        return r1 && r2 && r3;
+    }
+
+
+    private static boolean insertManageBreakfast(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','breakfast')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+
+    private static boolean insertManageLunch(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','lunch')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+
+    private static boolean insertManageDinner(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','dinner')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+
+    private static boolean insertManagePeople(){
+        boolean r1;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname, gender, university, rent, address, size, foodallergies) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','" + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + "','" + collectedData.get(7) + "','" + collectedData.get(8) + "')");
+        return r1;
+    }
+/*
+    private static boolean insertSponsorshipStaff(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO chooses(stud_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','dinner')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+    */
     private static boolean insertInManageTeams(){
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO team(team_id, name) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(description) VALUES ('" + collectedData.get(2) + "')");
+        return r1 && r2;
+    }
+    private static boolean insertInManageLocationEvent(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, type, theme, start_time, end_time) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + collectedData.get(7) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         return r1 && r2;
     }
 }
