@@ -92,15 +92,13 @@ public class AddHandler {
                 return insertParticipant();
 
             case "manageStops":
-                insertStop();//CHANGE HERE
-                break;
+                return insertStop();//CHANGE HERE
 
             case "manageStuffPayloads":
-                insertStuffPayload();//CHANGE HERE
-                break;
+                return insertStuffPayload();//CHANGE HERE
+
             case"accommodationLocation":
-                insertInManageLocations();
-                break;
+                return insertInManageLocations();
             default:
                 break;
         }
