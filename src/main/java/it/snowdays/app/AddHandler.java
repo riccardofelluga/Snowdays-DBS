@@ -97,8 +97,8 @@ public class AddHandler {
             case "manageStuffPayloads":
                 return insertStuffPayload();
 
-            case "sportStuff":
-                return insertSportBSC();
+            case "BSCTStuff":
+                return insertBCT();
 
             case "accommodationLocation":
                 return insertInManageLocationsAccommodation();
@@ -144,7 +144,7 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(3) + "')");
         return r1 && r2;
     }
-    private static boolean insertSportBSC(){ //insert for the pariticipant table
+    private static boolean insertBCT(){ //insert for the pariticipant table
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO chooses(stud_id, inventory_id) VALUES ('" + collectedData.get(3) + "' , '" + collectedData.get(0) + "')");

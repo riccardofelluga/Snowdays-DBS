@@ -2,6 +2,7 @@ package it.snowdays.app;
 
 import java.util.ArrayList;
 
+import it.snowdays.app.panels.ViewPane;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -134,10 +135,14 @@ public class TableHandler {
                 u.updateRemote(event.getTableView().getItems().get(tRow).get(0), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue());
             
 
-            ArrayList<String> tuple = event.getTableView().getItems().get(tRow);
-            tuple.set(tCol, event.getNewValue());
+            DataHandler.getInstance().reloadRemote();
+            ViewPane.getInstance().updateView();
+            
+            //removed local update --> useless
+            // ArrayList<String> tuple = event.getTableView().getItems().get(tRow);
+            // tuple.set(tCol, event.getNewValue());
 
-            event.getTableView().getItems().set(tRow, tuple);
+            // event.getTableView().getItems().set(tRow, tuple);
 
             
         }

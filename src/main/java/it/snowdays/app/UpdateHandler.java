@@ -76,18 +76,18 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("insertTeams", "description"), "UPDATE sport_event");
         keyMap.put("insertTeams", "team_id");
 
-        queryMap.put(new Pair<String,String>("insertInManageHosts", "phone_no"), "UPDATE host");
-        queryMap.put(new Pair<String,String>("insertInManageHosts", "name"), "UPDATE host");
-        queryMap.put(new Pair<String,String>("insertInManageHosts", "surname"), "UPDATE host");
-        queryMap.put(new Pair<String,String>("insertInManageHosts", "name"), "UPDATE accomodation");
-        keyMap.put("insertInManageHosts", "phone_no");
+        queryMap.put(new Pair<String,String>("manageHosts", "phone_no"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("manageHosts", "name"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("manageHosts", "surname"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("manageHosts", "accommodation_id"), "UPDATE accommodation");
+        keyMap.put("manageHosts", "phone_no");
 
-        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "accommodation_id"), "UPDATE accommodation");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "name"), "UPDATE accommodation");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "capacity"), "UPDATE accommodation");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "ref_phone_number"), "UPDATE accommodation");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "location_id"), "UPDATE location");
-        keyMap.put("insertInManageLocationsAccommodation", "accommodation_id");
+        queryMap.put(new Pair<String,String>("accommodationLocation", "accommodation_id"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("accommodationLocation", "name"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("accommodationLocation", "capacity"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("accommodationLocation", "ref_phone_number"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("accommodationLocation", "location_id"), "UPDATE location");
+        keyMap.put("accommodationLocation", "accommodation_id");
         
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "stud_id"), "UPDATE finds");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "name"), "UPDATE participant");
@@ -106,11 +106,11 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "end_time"), "UPDATE event");
         keyMap.put("insertInManageLocationsEvent", "event_id");
 
-        queryMap.put(new Pair<String,String>("sportStuff", "inventory_id"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "description"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "vat_no"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "stud_id"), "UPDATE chooses");
-        keyMap.put("sportStuff", "inventory_id");
+        queryMap.put(new Pair<String,String>("BSCTStuff", "inventory_id"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("BSCTStuff", "description"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("BSCTStuff", "vat_no"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("BSCTStuff", "stud_id"), "UPDATE chooses");
+        keyMap.put("BSCTStuff", "inventory_id");
     }
 
     public void updateRemote(String keyValue, String attribute,String value){

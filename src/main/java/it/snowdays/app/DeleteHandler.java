@@ -41,10 +41,7 @@ public class DeleteHandler {
         keyMap.put("insertTeams", "DELETE FROM team WHERE team_id = ");
 
         keyMap = new HashMap<String, String>();
-        keyMap.put("insertInManageHosts", "DELETE FROM host WHERE phone_no = ");
-
-        keyMap = new HashMap<String, String>();
-        keyMap.put("insertInManageLocationsAccommodation", "DELETE FROM accommodation WHERE accommodation_id = ");
+        keyMap.put("manageHosts", "DELETE FROM host WHERE phone_no = ");
 
         keyMap = new HashMap<String, String>();
         keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
@@ -53,7 +50,11 @@ public class DeleteHandler {
         keyMap.put("sponsorshipStaff", "DELETE FROM finds WHERE stud_id = ");
 
         keyMap = new HashMap<String, String>();
-        keyMap.put("sportStuff", "DELETE FROM base_camp_thing WHERE inventory_id = ");
+        keyMap.put("BSCTStuff", "DELETE FROM base_camp_thing WHERE inventory_id = ");
+
+        keyMap = new HashMap<String, String>();
+        keyMap.put("accommodationLocation", "DELETE FROM accomodation WHERE accomodation_id = ");
+
     }
 
     public void deleteRemote(String key){

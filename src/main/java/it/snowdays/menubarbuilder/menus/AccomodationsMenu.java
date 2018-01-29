@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
  */
 public class AccomodationsMenu extends Menu{
 
-    private String locQuery = "SELECT a.accommodation_id, a.name, a.capacity, a.ref_phone_number, l.name AS address FROM accommodation a LEFT JOIN location l ON a.location_id = l.location_id";
+    private String locQuery = "SELECT a.accommodation_id, a.name, a.capacity, a.ref_phone_number, l.name AS address FROM accommodation a LEFT JOIN location l ON a.location_id = l.location_id ORDER BY accommodation_id";
 
     public AccomodationsMenu(){
         super("Accomodations");
