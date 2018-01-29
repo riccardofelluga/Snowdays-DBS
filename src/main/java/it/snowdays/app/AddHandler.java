@@ -108,13 +108,17 @@ public class AddHandler {
 
     }
 
-    private static void insertParticipant(){ //insert for the participant table
-        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
+    private static boolean insertParticipant(){ //insert for the pariticipant table
+        boolean r1,r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES ('" + collectedData.get(0) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(3) + "')");
+        return r1 && r2;
     }
-    private static void insertSportBSC(){ //insert for the pariticipant table
-        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
+    private static boolean insertSportBSC(){ //insert for the pariticipant table
+        boolean r1 = false;
+        for(int i = 0; i < Integer.parseInt(collectedData.get(3)); i++)
+            r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + (Integer.parseInt(collectedData.get(0))+i) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        return r1;
     }
     private static void insertStop(){ //insert for stop & transport table
         SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
