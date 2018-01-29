@@ -2,6 +2,7 @@ package it.snowdays.app;
 
 import java.util.HashMap;
 
+import it.snowdays.app.panels.ViewPane;
 import javafx.util.Pair;
 
 /**
@@ -22,6 +23,12 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("participant", "surname"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("participant", "role"), "UPDATE staff");
         keyMap.put("participant", "stud_id");
+
+        queryMap.put(new Pair<String,String>("sportStuff", "inventory_id"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "description"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "vat_no"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "stud_id"), "UPDATE chooses");
+        keyMap.put("sportStuff", "inventory_id");
 
         queryMap.put(new Pair<String,String>("playingDJs", "performance_id"), "UPDATE performance");
         queryMap.put(new Pair<String,String>("playingDJs", "dj_name"), "UPDATE performance");
@@ -69,5 +76,8 @@ public class UpdateHandler {
 
         SQLFetcher.nonSelectQuery(q + " SET " + attribute + " = '" + value + "' WHERE " + k + " = '" + keyValue + "'");
 
+        //refresh table
+        DataHandler.getInstance().reloadRemote();
+        ViewPane.getInstance().updateView();
     }
 }
