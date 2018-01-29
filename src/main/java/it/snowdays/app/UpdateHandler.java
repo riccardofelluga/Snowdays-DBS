@@ -2,7 +2,6 @@ package it.snowdays.app;
 
 import java.util.HashMap;
 
-import it.snowdays.app.panels.ViewPane;
 import javafx.util.Pair;
 
 /**
@@ -23,12 +22,6 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("participant", "surname"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("participant", "role"), "UPDATE staff");
         keyMap.put("participant", "stud_id");
-
-        queryMap.put(new Pair<String,String>("sportStuff", "inventory_id"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "description"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "vat_no"), "UPDATE base_camp_thing");
-        queryMap.put(new Pair<String,String>("sportStuff", "stud_id"), "UPDATE chooses");
-        keyMap.put("sportStuff", "inventory_id");
 
         queryMap.put(new Pair<String,String>("playingDJs", "performance_id"), "UPDATE performance");
         queryMap.put(new Pair<String,String>("playingDJs", "dj_name"), "UPDATE performance");
@@ -66,8 +59,35 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("managePeople", "size"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("managePeople", "foodallergies"), "UPDATE participant");
         keyMap.put("managePeople", "stud_id");
-        
-    
+
+        queryMap.put(new Pair<String,String>("manageStops", "stop_id"), "UPDATE stop");
+        queryMap.put(new Pair<String,String>("manageStops", "name"), "UPDATE stop");
+        queryMap.put(new Pair<String,String>("manageStops", "departure_time"), "UPDATE stop");
+        queryMap.put(new Pair<String,String>("manageStops", "arrival_time"), "UPDATE stop");
+        queryMap.put(new Pair<String,String>("manageStops", "transport_plateno"), "UPDATE transport");
+        keyMap.put("manageStop", "stop_id");
+
+        queryMap.put(new Pair<String,String>("insertStuffPayload", "transport_plateno"), "UPDATE transport");
+        queryMap.put(new Pair<String,String>("insertStuffPayload", "description"), "UPDATE base_camp_thing");
+        keyMap.put("insertStuffPayload", "transport_plateno");
+
+        queryMap.put(new Pair<String,String>("insertTeams", "team_id"), "UPDATE team");
+        queryMap.put(new Pair<String,String>("insertTeams", "name"), "UPDATE team");
+        queryMap.put(new Pair<String,String>("insertTeams", "description"), "UPDATE sport_event");
+        keyMap.put("insertTeams", "team_id");
+
+        queryMap.put(new Pair<String,String>("insertInManageHosts", "phone_no"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("insertInManageHosts", "name"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("insertInManageHosts", "surname"), "UPDATE host");
+        queryMap.put(new Pair<String,String>("insertInManageHosts", "name"), "UPDATE accomodation");
+        keyMap.put("insertInManageHosts", "phone_no");
+
+        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "accommodation_id"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "name"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "capacity"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "ref_phone_number"), "UPDATE accommodation");
+        queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "location_id"), "UPDATE location");
+        keyMap.put("insertInManageLocationsAccommodation", "accommodation_id");
     }
 
     public void updateRemote(String keyValue, String attribute,String value){
@@ -76,8 +96,5 @@ public class UpdateHandler {
 
         SQLFetcher.nonSelectQuery(q + " SET " + attribute + " = '" + value + "' WHERE " + k + " = '" + keyValue + "'");
 
-        //refresh table
-        DataHandler.getInstance().reloadRemote();
-        ViewPane.getInstance().updateView();
     }
 }
