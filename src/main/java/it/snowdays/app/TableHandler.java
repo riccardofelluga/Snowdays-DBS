@@ -65,47 +65,51 @@ public class TableHandler {
             tc.setCellValueFactory(cb);
             tc.setCellFactory(TextFieldTableCell.forTableColumn());
             tc.setOnEditCommit(editEvent);
-            //custom things here!
+            if(!DataHandler.getInstance().isReadOnly())
+                tc.setEditable(false);
             
-
+            //custom things here!
             table.getColumns().add(tc);
-            table.setEditable(true);
         }
         
         TableColumn<ArrayList<String>, String> delCol = new TableColumn<>("Remove");
 
-            Callback<CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>> delCb = new Callback<TableColumn.CellDataFeatures<ArrayList<String>,String>,ObservableValue<String>>() {
+        Callback<CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>> delCb = new Callback<TableColumn.CellDataFeatures<ArrayList<String>,String>,ObservableValue<String>>() {
 
-				@Override
-				public ObservableValue<String> call(CellDataFeatures<ArrayList<String>, String> param) {
-					return new ReadOnlyObjectWrapper<String>(param.getValue().get(0));//first col
-				}
-            };
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ArrayList<String>, String> param) {
+                return new ReadOnlyObjectWrapper<String>(param.getValue().get(0));//first col
+			}
+        };
 
-            delCol.setCellValueFactory(delCb);
-            //try with button as type
-            delCol.setCellFactory(param -> new TableCell<ArrayList<String>, String>(){
-                private final Button delBtn = new Button("X");
-                @Override
-                protected void updateItem(String id, boolean empty){
-                    super.updateItem(id, empty);
+        delCol.setCellValueFactory(delCb);
+        //try with button as type
+        delCol.setCellFactory(param -> new TableCell<ArrayList<String>, String>(){
+            private final Button delBtn = new Button("X");
+            @Override
+            protected void updateItem(String id, boolean empty){
+                super.updateItem(id, empty);
 
-                    if(id == null){
-                        setGraphic(null);
-                        return;
-                    }
-
-                    setGraphic(delBtn);
-                    setAlignment(Pos.CENTER);
-                    delBtn.setOnAction(e->{
-                        //SET DELETE
-                        DeleteHandler d = new DeleteHandler();
-                        d.deleteRemote(id);    
-                    });
+                if(id == null){
+                    setGraphic(null);
+                    return;
                 }
-            });
 
-        table.getColumns().add(delCol);
+                setGraphic(delBtn);
+                setAlignment(Pos.CENTER);
+                delBtn.setOnAction(e->{
+                    //SET DELETE
+                    DeleteHandler d = new DeleteHandler();
+                    d.deleteRemote(id);    
+                });
+            }
+        });
+        
+        if(!DataHandler.getInstance().isReadOnly()){
+            table.getColumns().add(delCol);
+            table.setEditable(true);
+        }
+
         table.setItems(inTableData);
 
         return table;

@@ -43,11 +43,13 @@ public class ViewPane extends VBox{
         getChildren().set(1, table);
         setVgrow(table, Priority.ALWAYS);
         options.populateSelector();
+        options.updateOptions();
     }
 
     private class OptionsPane extends GridPane{
 
         private ChoiceBox<String> selector = null;
+        private Button addBtn;
 
         public OptionsPane(){
 
@@ -66,12 +68,13 @@ public class ViewPane extends VBox{
 
             populateSelector();
     
-            Button addBtn = new Button("+");
+            addBtn = new Button("+");
             addBtn.setOnAction(e -> {
                 AddHandler.promptAdd();
                 DataHandler.getInstance().reloadRemote();//fetch again the DB
                 updateView();
             });
+            addBtn.setDisable(DataHandler.getInstance().isReadOnly());
 
             Button rstButton = new Button("X");
             rstButton.setOnAction(e -> {
@@ -91,6 +94,17 @@ public class ViewPane extends VBox{
             addColumn(2, selector);
             addColumn(3, rstButton);
 
+        }
+
+        public void updateOptions(){
+            addBtn.setDisable(DataHandler.getInstance().isReadOnly());
+            if(DataHandler.getInstance().isReadOnly()){
+                addBtn.setText("READ ONLY");
+                addBtn.setStyle("-fx-background-color: #e60000; -fx-text-fill: white");
+            } else{
+                addBtn.setText("+");
+                addBtn.setStyle("");
+            }
         }
 
         private void search(String input, String tab){
