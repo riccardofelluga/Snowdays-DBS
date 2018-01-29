@@ -126,7 +126,7 @@ public class TableHandler {
 
             //SET UPDATE
             UpdateHandler u = new UpdateHandler();
-            if(DataHandler.getInstance().getTableName().equals("sponsorshipStaff")){
+            if(DataHandler.getInstance().getTableName().equals("sponsorshipStaff") && (DataHandler.getInstance().getHeader().get(tCol).equals("stud_id") || DataHandler.getInstance().getHeader().get(tCol).equals("vat_no"))){
                 int s = DataHandler.getInstance().getHeader().size()-1;
                 u.updateRemoteOther(event.getTableView().getItems().get(tRow).get(0), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue(), DataHandler.getInstance().getHeader().get(s) , event.getTableView().getItems().get(tRow).get(4));
             }else if(tCol == 0)
