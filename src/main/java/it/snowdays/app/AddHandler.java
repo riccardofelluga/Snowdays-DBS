@@ -1,7 +1,6 @@
 package it.snowdays.app;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -92,7 +91,11 @@ public class AddHandler {
             case "participant":
                 insertParticipant();
                 break;
-        
+
+            case "x":
+                insertX();
+                break;
+            
             default:
                 break;
         }
@@ -102,7 +105,11 @@ public class AddHandler {
     }
 
     private static void insertParticipant(){ //insert for the pariticipant table
-        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + "," + collectedData.get(1) + "," + collectedData.get(2) + ")");
-        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + "," + collectedData.get(3) + ")");
+        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
+    }
+    private static void insertX(){ //insert for the pariticipant table
+        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
     }
 }

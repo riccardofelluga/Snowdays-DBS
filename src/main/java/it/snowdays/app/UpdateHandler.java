@@ -23,6 +23,8 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("participant", "role"), "UPDATE staff");
         keyMap.put("participant", "stud_id");
 
+        
+
     }
 
     public void updateRemote(String keyValue, String attribute,String value){
