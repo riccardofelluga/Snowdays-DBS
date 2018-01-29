@@ -17,52 +17,43 @@ public class DeleteHandler {
         keyMap.put("participant", "DELETE FROM staff WHERE stud_id = ");//put the query in the map
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("playingDJs", "DELETE FROM performance WHERE performance_id = ");
         
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("manageBreakfast", "DELETE FROM event WHERE event_id = ");
-
+        
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("manageLunch", "DELETE FROM event WHERE event_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("manageDinner", "DELETE FROM event WHERE event_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("managePeople", "DELETE FROM participant WHERE stud_id = ");
         
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("manageStop", "DELETE FROM stop WHERE stop_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("insertStuffPayload", "DELETE FROM transport WHERE transport_plateno = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("insertTeams", "DELETE FROM team WHERE team_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("insertInManageHosts", "DELETE FROM host WHERE phone_no = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("insertInManageLocationsAccommodation", "DELETE FROM accommodation WHERE accommodation_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
 
         keyMap = new HashMap<String, String>();
-        //populate map here!
         keyMap.put("sponsorshipStaff", "DELETE FROM chooses WHERE stud_id = ");
+
+        keyMap = new HashMap<String, String>();
+        keyMap.put("sportStuff", "DELETE FROM base_camp_thing WHERE inventory_id = ");
     }
 
     public void deleteRemote(String key){

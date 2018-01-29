@@ -211,4 +211,5 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         return r1 && r2;
     }
+
 }

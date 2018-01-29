@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
  */
 public class BaseCampMenu extends Menu{
 
-    private String sportStuffQuery = "SELECT bct.inventory_id, bct.description, bct.vat_no, s.stud_id FROM (base_camp_thing bct LEFT JOIN chooses c ON bct.inventory_id = c.inventory_id) LEFT JOIN staff s ON s.stud_id = c.stud_id WHERE s.role = 'Sport';";
+    private String sportStuffQuery = "SELECT bct.inventory_id, bct.description, bct.vat_no, s.stud_id FROM (base_camp_thing bct LEFT JOIN chooses c ON bct.inventory_id = c.inventory_id) LEFT JOIN staff s ON s.stud_id = c.stud_id WHERE s.role = 'Sport'";
     private String cateringStuffQuery = "SELECT bct.inventory_id, bct.description, count(description) AS quantity FROM (base_camp_thing bct LEFT JOIN chooses c ON bct.inventory_id = c.inventory_id) LEFT JOIN staff s ON s.stud_id = c.stud_id WHERE s.role = 'Catering' GROUP BY bct.description, bct.inventory_id";
     private String logisticStuffQuery = "SELECT bct.inventory_id, bct.description, count(description) AS quantity FROM (base_camp_thing bct LEFT JOIN chooses c ON bct.inventory_id = c.inventory_id) LEFT JOIN staff s ON s.stud_id = c.stud_id WHERE s.role = 'Logistic' GROUP BY bct.description, bct.inventory_id";
     
