@@ -1,7 +1,5 @@
 package it.snowdays.menubarbuilder.menus;
 
-import java.util.ArrayList;
-import java.util.Optional;
 import it.snowdays.app.DataHandler;
 import it.snowdays.app.SQLFetcher;
 import it.snowdays.app.panels.ViewPane;
@@ -9,11 +7,14 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 /**
  * SportEventMenu
  */
-public class SportEventMenu extends Menu{
-
+public class SportEventMenu extends Menu
+{
     private String locQuery = "SELECT se.sport_event_id, se.description, l.address, l.name " + 
                                 " FROM (sport_event se LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id)" +
                                 " LEFT JOIN location l ON ipa.location_id = l.location_id";
@@ -71,8 +72,8 @@ public class SportEventMenu extends Menu{
         getItems().add(manageSportStaff);
     }
 
-    private String getSBID(String query){
-
+    private String getSBID(String query)
+    {
         String sbName;
 
         ChoiceDialog<String> d = new ChoiceDialog<String>();
