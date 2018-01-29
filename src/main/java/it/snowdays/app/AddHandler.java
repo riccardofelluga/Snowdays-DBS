@@ -99,7 +99,9 @@ public class AddHandler {
             case "manageStuffPayloads":
                 insertStuffPayload();
                 break;
-
+            case"accommodationLocation":
+                insertInManageLocations();
+                break;
             default:
                 break;
         }
@@ -120,14 +122,22 @@ public class AddHandler {
             r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + (Integer.parseInt(collectedData.get(0))+i) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         return r1;
     }
-    private static void insertStop(){ //insert for stop & transport table
-        SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
+    private static boolean insertStop(){ //insert for stop & transport table
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
+        return r1 && r2;
     }
-    private static void insertStuffPayload(){ // insert for base camp thing & transport table
-        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
+    private static boolean insertStuffPayload(){ // insert for base camp thing & transport table
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
     }
-
-
+    private static boolean insertInManageLocations(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id) VALUES ('" + collectedData.get(4) + "')");
+        return r1 && r2;
+    }
 }
