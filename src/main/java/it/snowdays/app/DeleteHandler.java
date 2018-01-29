@@ -35,6 +35,30 @@ public class DeleteHandler {
         keyMap = new HashMap<String, String>();
         //populate map here!
         keyMap.put("managePeople", "DELETE FROM participant WHERE stud_id = ");
+        
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("manageStop", "DELETE FROM stop WHERE stop_id = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("insertStuffPayload", "DELETE FROM transport WHERE transport_plateno = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("insertTeams", "DELETE FROM team WHERE team_id = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("insertInManageHosts", "DELETE FROM host WHERE phone_no = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("insertInManageLocationsAccommodation", "DELETE FROM accommodation WHERE accommodation_id = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
     }
 
     public void deleteRemote(String key){
