@@ -20,7 +20,7 @@ public class EdibleMenu extends Menu{
 
         MenuItem manageBreakfast = new MenuItem("Manage breakfasts");
         manageBreakfast.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(breakfastQuery, "mangeBreakfast");
+            DataHandler.getInstance().loadRemote(breakfastQuery, "manageBreakfast");
             ViewPane.getInstance().updateView();
         });
 
