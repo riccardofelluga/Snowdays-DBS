@@ -93,7 +93,7 @@ public class AddHandler {
                 break;
 
             case "x":
-                insertX();
+                //insertX();
                 break;
             
             default:
@@ -108,7 +108,7 @@ public class AddHandler {
         SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
     }
-    private static void insertX(){ //insert for the pariticipant table
+    private static void insertSportBSC(){ //insert for the pariticipant table
         SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
     }
