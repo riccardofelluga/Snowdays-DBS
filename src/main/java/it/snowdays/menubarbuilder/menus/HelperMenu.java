@@ -14,12 +14,12 @@ public class HelperMenu extends Menu{
         super("Helper");
         MenuItem assigStaff = new MenuItem("Assign to staff");
         assigStaff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(assignQuery, "");
+            DataHandler.getInstance().loadRemote(assignQuery, "assignToStaff");
             ViewPane.getInstance().updateView();
         });
         MenuItem manageTasks = new MenuItem("Manage tasks");
         manageTasks.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(tasksQuery, "");
+            DataHandler.getInstance().loadRemote(tasksQuery, "manageTasks");
             ViewPane.getInstance().updateView();
         });
 

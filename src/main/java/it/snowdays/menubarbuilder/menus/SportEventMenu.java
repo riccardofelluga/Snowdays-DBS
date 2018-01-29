@@ -24,38 +24,49 @@ public class SportEventMenu extends Menu{
                                 " LEFT JOIN sport_event se ON pt.sport_event_id = se.sport_event_id) " +
                                 " LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id) " +
                                 " LEFT JOIN location l ON ipa.location_id = l.location_id";                       
-    public SportEventMenu(){
+    
+    private String teamsQuery = "SELECT t.team_id, t.name, se.description FROM (team t LEFT JOIN clashes_in ci ON t.team_id = ci.team_id) LEFT JOIN sport_event se ON ci.sport_event_id = se.sport_event_id";
+
+
+        public SportEventMenu(){
         super("Sport Events");
 
         MenuItem manageSportLocations = new MenuItem("Manage locations");
         manageSportLocations.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(locQuery, "");
+            DataHandler.getInstance().loadRemote(locQuery, "manageLocations");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageSportStaff = new MenuItem("Manage staff");
         manageSportStaff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(staffQuery, "");
+            DataHandler.getInstance().loadRemote(staffQuery, "manageStaff");
+            ViewPane.getInstance().updateView();
+        });
+
+        MenuItem manageTeams = new MenuItem("Manage teams");
+        manageTeams.setOnAction(e -> {
+            DataHandler.getInstance().loadRemote(teamsQuery, "manageTeams");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem scoreboardIndividual = new MenuItem("Individual Sports Scoreboard");
         scoreboardIndividual.setOnAction(e -> {
             String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN competes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
-            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "");
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "individualSportsScoreboard");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem scoreboardTeam = new MenuItem("Team Sports Scoreboard");
         scoreboardTeam.setOnAction(e -> {
             String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN clashes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
-            DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "");
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "teamSportsScoreboard");
             ViewPane.getInstance().updateView();
         });
 
         
         getItems().add(scoreboardIndividual);
         getItems().add(scoreboardTeam);
+        getItems().add(manageTeams);
         getItems().add(manageSportLocations);
         getItems().add(manageSportStaff);
     }
