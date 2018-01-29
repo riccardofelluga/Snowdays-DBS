@@ -161,4 +161,10 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(description) VALUES ('" + collectedData.get(2) + "')");
         return r1 && r2;
     }
+    private static boolean insertInManageLocationEvent(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, type, theme, start_time, end_time) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + collectedData.get(7) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        return r1 && r2;
+    }
 }
