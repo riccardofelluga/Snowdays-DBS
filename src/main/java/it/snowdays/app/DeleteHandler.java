@@ -59,6 +59,10 @@ public class DeleteHandler {
         keyMap = new HashMap<String, String>();
         //populate map here!
         keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
+
+        keyMap = new HashMap<String, String>();
+        //populate map here!
+        keyMap.put("sponsorshipStaff", "DELETE FROM chooses WHERE stud_id = ");
     }
 
     public void deleteRemote(String key){
