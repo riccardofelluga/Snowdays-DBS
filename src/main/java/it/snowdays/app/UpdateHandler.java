@@ -79,8 +79,8 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("manageHosts", "phone_no"), "UPDATE host");
         queryMap.put(new Pair<String,String>("manageHosts", "name"), "UPDATE host");
         queryMap.put(new Pair<String,String>("manageHosts", "surname"), "UPDATE host");
-        queryMap.put(new Pair<String,String>("manageHosts", "accommodation_id"), "UPDATE accommodation");
-        keyMap.put("manageHosts", "phone_no");
+        queryMap.put(new Pair<String,String>("manageHosts", "accommodation_id"), "UPDATE host");
+        keyMap.put("manageHosts", "accommodation_id");
 
         queryMap.put(new Pair<String,String>("accommodationLocation", "accommodation_id"), "UPDATE accommodation");
         queryMap.put(new Pair<String,String>("accommodationLocation", "name"), "UPDATE accommodation");
