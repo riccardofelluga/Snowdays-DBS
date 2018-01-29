@@ -103,6 +103,12 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "start_time"), "UPDATE event");
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "end_time"), "UPDATE event");
         keyMap.put("insertInManageLocationsEvent", "event_id");
+
+        queryMap.put(new Pair<String,String>("sportStuff", "inventory_id"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "description"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "vat_no"), "UPDATE base_camp_thing");
+        queryMap.put(new Pair<String,String>("sportStuff", "stud_id"), "UPDATE chooses");
+        keyMap.put("sportStuff", "inventory_id");
     }
 
     public void updateRemote(String keyValue, String attribute,String value){

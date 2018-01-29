@@ -1,23 +1,27 @@
 package it.snowdays.app;
 
 import it.snowdays.app.panels.ViewPane;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * SQLFetcher
  */
 public class SQLFetcher {
 
-    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/snowddays";
+    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/postgres";
     //jdbc:postgresql://localhost:5432/postgres
     //private static Connection connection;
-    private static String username = "giaco";
+    private static String username = "app";
     //"postgres";
-    private static String password = "NalgeneAdmin";
+    private static String password = "RRL=RKxkM#";
             //"postgresql";
     
 
