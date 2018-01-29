@@ -210,8 +210,8 @@ public class AddHandler {
 
     private static boolean insertSponsorshipStaff(){
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO find(stud_id, vat_no) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO sponsor(vat_no, company) VALUES ('" + collectedData.get(4) + "','" + collectedData.get(3) +"')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO sponsor(vat_no, company) VALUES ('" + collectedData.get(4) + "','" + collectedData.get(3) +"')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO finds(stud_id, vat_no) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "')");
         return r1 && r2;
     }
 
