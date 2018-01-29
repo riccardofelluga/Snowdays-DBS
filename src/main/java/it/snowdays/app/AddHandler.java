@@ -1,16 +1,13 @@
 package it.snowdays.app;
 
-import java.util.ArrayList;
-import java.util.Optional;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * AddHandler
@@ -232,5 +229,15 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         return r1 && r2;
     }
+
+    //Insert into scoreboard for teams
+    /*
+    private static boolean insertInTeamSportsScoreboard()
+    {
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery();
+        r2 = SQLFetcher.nonSelectQuery();
+        return r1 && r2;
+    }*/
 
 }
