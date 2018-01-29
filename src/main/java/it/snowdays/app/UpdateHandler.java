@@ -89,11 +89,13 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("insertInManageLocationsAccommodation", "location_id"), "UPDATE location");
         keyMap.put("insertInManageLocationsAccommodation", "accommodation_id");
         
-        queryMap.put(new Pair<String,String>("sponsorshipStaff", "stud_id"), "UPDATE chooses");
+        queryMap.put(new Pair<String,String>("sponsorshipStaff", "stud_id"), "UPDATE finds");
+        queryMap.put(new Pair<String,String>("sponsorshipStaff", "company"), "UPDATE finds");
       /*  queryMap.put(new Pair<String,String>("sponsorshipStaff", "name"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "surname"), "UPDATE participant");*/
-        queryMap.put(new Pair<String,String>("sponsorshipStaff", "company"), "UPDATE chooses");
+        
         keyMap.put("sponsorshipStaff", "stud_id");
+        
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "event_id"), "UPDATE event");
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "name"), "UPDATE location");
         queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "address"), "UPDATE location");
@@ -116,6 +118,14 @@ public class UpdateHandler {
         String k = keyMap.get(DataHandler.getInstance().getTableName());
 
         SQLFetcher.nonSelectQuery(q + " SET " + attribute + " = '" + value + "' WHERE " + k + " = '" + keyValue + "'");
+
+    }
+
+    public void updateRemoteOther(String keyValue, String attribute,String value,String other, String otherValue){
+        String q = queryMap.get(new Pair<String, String>(DataHandler.getInstance().getTableName(), attribute)); //get the query from the map
+        String k = keyMap.get(DataHandler.getInstance().getTableName());
+
+        SQLFetcher.nonSelectQuery(q + " SET " + attribute + " = '" + value + "' WHERE " + k + " = '" + keyValue + "' AND " + other + " = '" + otherValue + "'");
 
     }
 }
