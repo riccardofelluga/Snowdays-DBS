@@ -18,13 +18,13 @@ public class SponsorMenu extends Menu {
 
         MenuItem manageFirms = new MenuItem("Manage firms");
         manageFirms.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(firmsQuery, "");
+            DataHandler.getInstance().loadRemote(firmsQuery, "manageFirms");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageSponsorshipStuff = new MenuItem("Sponsorships stuff");
         manageSponsorshipStuff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(sponsorshipQuery, "");
+            DataHandler.getInstance().loadRemote(sponsorshipQuery, "sponsorshipStuff");
             ViewPane.getInstance().updateView();
         });
 

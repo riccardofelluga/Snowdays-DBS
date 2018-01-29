@@ -18,13 +18,13 @@ public class ParticipantsMenu extends Menu{
 
         MenuItem managePart = new MenuItem("Manage people");
         managePart.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(partQuery, "");
+            DataHandler.getInstance().loadRemote(partQuery, "managePeople");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageUni = new MenuItem("Manage universities");
         manageUni.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(uniQuery, "");
+            DataHandler.getInstance().loadRemote(uniQuery, "manageUniversities");
             ViewPane.getInstance().updateView();
         });
 

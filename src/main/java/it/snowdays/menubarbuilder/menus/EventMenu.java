@@ -17,12 +17,12 @@ public class EventMenu extends Menu{
         super("Event");
         MenuItem manageEventLoc = new MenuItem("Manage locations");
         manageEventLoc.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(locQuery, "");
+            DataHandler.getInstance().loadRemote(locQuery, "manageLocations");
             ViewPane.getInstance().updateView();
         });
         MenuItem manageDJ = new MenuItem("Playing DJs");
         manageDJ.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(dJQuery, "");
+            DataHandler.getInstance().loadRemote(dJQuery, "playingDJs");
             ViewPane.getInstance().updateView();
         });
         getItems().add(manageEventLoc);

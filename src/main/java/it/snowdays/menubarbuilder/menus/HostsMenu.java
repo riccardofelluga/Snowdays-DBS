@@ -17,7 +17,7 @@ public class HostsMenu extends Menu{
 
         MenuItem manageHosts= new MenuItem("Manage hosts");
         manageHosts.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(hostsQuery, "");
+            DataHandler.getInstance().loadRemote(hostsQuery, "manageHosts");
             ViewPane.getInstance().updateView();
         });
 

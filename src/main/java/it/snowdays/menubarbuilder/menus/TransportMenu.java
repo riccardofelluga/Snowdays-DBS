@@ -19,7 +19,7 @@ public class TransportMenu extends Menu{
         
         MenuItem manageStops = new MenuItem("Manage stops");
         manageStops.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(stopsQuery, "");
+            DataHandler.getInstance().loadRemote(stopsQuery, "manageStops");
             ViewPane.getInstance().updateView();
         });
 
@@ -31,7 +31,7 @@ public class TransportMenu extends Menu{
 
         MenuItem manageStuffPayloads = new MenuItem("Manage stuff payloads");
         manageStuffPayloads.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(payloadQuery, "");
+            DataHandler.getInstance().loadRemote(payloadQuery, "manageStuffPayloads");
             ViewPane.getInstance().updateView();
         });
 
