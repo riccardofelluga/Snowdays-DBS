@@ -92,19 +92,23 @@ public class AddHandler {
                 insertParticipant();
                 break;
 
-            case "x":
-                //insertX();
+            case "manageStops":
+                insertStop();
                 break;
-            
+
+            case "manageStuffPayloads":
+                insertStuffPayload();
+                break;
+
             default:
                 break;
         }
-        
+
         return false;
-        
+
     }
 
-    private static void insertParticipant(){ //insert for the pariticipant table
+    private static void insertParticipant(){ //insert for the participant table
         SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
     }
@@ -112,4 +116,14 @@ public class AddHandler {
         SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + ",'" + collectedData.get(3) + "')");
     }
+    private static void insertStop(){ //insert for stop & transport table
+        SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
+    }
+    private static void insertStuffPayload(){ // insert for base camp thing & transport table
+        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
+        SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
+    }
+
+
 }
