@@ -17,7 +17,7 @@ public class AccomodationsMenu extends Menu{
 
         MenuItem manageAccLoc= new MenuItem("Manage locations");
         manageAccLoc.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(locQuery, "accomodationLocation");
+            DataHandler.getInstance().loadRemote(locQuery, "accommodationLocation");
             ViewPane.getInstance().updateView();
         });
 

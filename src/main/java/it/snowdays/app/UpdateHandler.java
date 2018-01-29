@@ -23,7 +23,15 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("participant", "role"), "UPDATE staff");
         keyMap.put("participant", "stud_id");
 
-        
+/*       queryMap.put(new Pair<String,String>("playingDJs", "performance_id"), "UPDATE participant");
+        queryMap.put(new Pair<String,String>("playingDJs", "dj_name"), "UPDATE participant");
+        queryMap.put(new Pair<String,String>("playingDJs", "start_hour"), "UPDATE participant");
+        queryMap.put(new Pair<String,String>("playingDJs", "end_hour"), "UPDATE staff");
+        queryMap.put(new Pair<String,String>("playingDJs", "name"), "UPDATE staff");
+        queryMap.put(new Pair<String,String>("playingDJs", "address"), "UPDATE staff");
+        keyMap.put("participant", "stud_id");
+
+        */
 
     }
 
