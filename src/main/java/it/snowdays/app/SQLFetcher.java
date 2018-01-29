@@ -78,7 +78,7 @@ public class SQLFetcher {
             ViewPane.getInstance().updateView();//refresh
             return false;
             }
+            return true;
         }
-        return false;
     }
 }

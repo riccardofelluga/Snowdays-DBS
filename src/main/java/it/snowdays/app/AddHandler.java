@@ -14,10 +14,10 @@ import javafx.scene.layout.GridPane;
 
 /**
  * AddHandler
- */ 
+ */
 
 public class AddHandler {
-    
+
     private static Dialog<ButtonType> d;
 
     private static ArrayList<String> collectedData;
@@ -40,7 +40,7 @@ public class AddHandler {
         //generate an array list and get from all -> colud work let's see
         int r = 0;
         ArrayList<TextField> fields = new ArrayList<TextField>();
-        
+
         //populate the dialog
         for (String s : DataHandler.getInstance().getHeader()) {
             TextField t = new TextField();
@@ -66,7 +66,7 @@ public class AddHandler {
         Optional<ButtonType> o = d.showAndWait();
 
         if(o.get() == addBtnType){
-            for (TextField t : fields) {       
+            for (TextField t : fields) {
                 collectedData.add(t.getText());
             }
 
@@ -79,26 +79,35 @@ public class AddHandler {
                 a.showAndWait();
             }
         }
-        
-       
+
+
     }
 
     private static boolean insertRemote(){
         if(collectedData == null)
             return false;
-        
+
         switch (DataHandler.getInstance().getTableName()) {
             case "participant":
-                insertParticipant();
-                break;
+                return insertParticipant();
 
             case "manageStops":
-                insertStop();
-                break;
+                return manageStop();
 
             case "manageStuffPayloads":
-                insertStuffPayload();
-                break;
+                return insertStuffPayload();
+
+            case "sportStuff":
+                return insertSportBSC();
+
+            case "accommodationLocation":
+                return insertInManageLocationsAccommodation();
+
+            case "manageHosts":
+                return insertInManageHosts();
+
+            case "manageTeams":
+                return insertInManageTeams();
 
             default:
                 break;
@@ -110,24 +119,46 @@ public class AddHandler {
 
     private static boolean insertParticipant(){ //insert for the pariticipant table
         boolean r1,r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES ('" + collectedData.get(0) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(3) + "')");
         return r1 && r2;
     }
     private static boolean insertSportBSC(){ //insert for the pariticipant table
-        boolean r1 = false;
-        for(int i = 0; i < Integer.parseInt(collectedData.get(3)); i++)
-            r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + (Integer.parseInt(collectedData.get(0))+i) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
-        return r1;
-    }
-    private static void insertStop(){ //insert for stop & transport table
-        SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
-    }
-    private static void insertStuffPayload(){ // insert for base camp thing & transport table
-        SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
-        SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO chooses(stud_id, inventory_id) VALUES ('" + collectedData.get(3) + "' , '" + collectedData.get(0) + "')");
+        return r1 && r2;
     }
 
+    private static boolean manageStop(){ //insert for stop & transport table
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
+        return r1 && r2;
+    }
 
+    private static boolean insertStuffPayload(){ // insert for base camp thing & transport table
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+    private static boolean insertInManageLocationsAccommodation(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id) VALUES ('" + collectedData.get(4) + "')");
+        return r1 && r2;
+    }
+    private static boolean insertInManageHosts(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO host(phone_no, name, surname) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(name) VALUES ('" + collectedData.get(1) + "')");
+        return r1 && r2;
+    }
+    private static boolean insertInManageTeams(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO team(team_id, name) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(description) VALUES ('" + collectedData.get(2) + "')");
+        return r1 && r2;
+    }
 }
