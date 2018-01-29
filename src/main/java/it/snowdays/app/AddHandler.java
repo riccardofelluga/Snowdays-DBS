@@ -21,8 +21,6 @@ public class AddHandler {
     
     private static Dialog<ButtonType> d;
 
-    private static HashMap<String, ArrayList<String>> queryMap;
-
     private static ArrayList<String> collectedData;
 
     public AddHandler(){}
@@ -90,22 +88,21 @@ public class AddHandler {
         if(collectedData == null)
             return false;
         
-        populateMap();
-
-        for (String q : queryMap.get(DataHandler.getInstance().getTableName())) {
-            SQLFetcher.nonSelectQuery(q + "(" +  + ")");
+        switch (DataHandler.getInstance().getTableName()) {
+            case "participant":
+                insertParticipant();
+                break;
+        
+            default:
+                break;
         }
         
         return false;
         
     }
 
-    private static void populateMap(){
-        queryMap = new HashMap<String, ArrayList<String>>();
-
-        ArrayList<String> participant = new ArrayList<String>();
-        participant.add("INSERT INTO participant(stud_id, name, surname) VALUES ");
-        participant.add("INSERT INTO staff(stud_id, role)");
-        queryMap.put("participant", participant);
+    private static void insertParticipant(){ //insert for the pariticipant table
+        SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES (" + collectedData.get(0) + "," + collectedData.get(1) + "," + collectedData.get(2) + ")");
+        SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES (" + collectedData.get(0) + "," + collectedData.get(3) + ")");
     }
 }

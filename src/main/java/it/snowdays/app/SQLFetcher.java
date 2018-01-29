@@ -16,12 +16,12 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class SQLFetcher {
 
-    private static final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";//"jdbc:postgresql://93.46.114.82:1995/postgres";
+    private static final String databaseURL = "jdbc:postgresql://93.46.114.82:1995/postgres";
     //jdbc:postgresql://localhost:5432/postgres
     //private static Connection connection;
-    private static String username = "riccardo";//"3lgrindero";
+    private static String username = "3lgrindero";
     //"postgres";
-    private static String password = "";
+    private static String password = "Montebello16";
             //"postgresql";
     
 
