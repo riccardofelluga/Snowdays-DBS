@@ -16,7 +16,7 @@ public class SponsorMenu extends Menu {
     public SponsorMenu(){
         super("Sponsor");
 
-        MenuItem manageFirms = new MenuItem("Manage firms");
+        MenuItem manageFirms = new MenuItem("See firms");
         manageFirms.setOnAction(e -> {
             DataHandler.getInstance().loadRemote(firmsQuery, "manageFirms", true);
             ViewPane.getInstance().updateView();
