@@ -96,6 +96,9 @@ public class AddHandler {
 
             case "manageStuffPayloads":
                 return insertStuffPayload();//CHANGE HERE
+                
+            case "sportStuff":
+                return insertSportBSC();
 
             case"accommodationLocation":
                 return insertInManageLocations();
@@ -114,10 +117,10 @@ public class AddHandler {
         return r1 && r2;
     }
     private static boolean insertSportBSC(){ //insert for the pariticipant table
-        boolean r1 = false;
-        for(int i = 0; i < Integer.parseInt(collectedData.get(3)); i++)
-            r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + (Integer.parseInt(collectedData.get(0))+i) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
-        return r1;
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(inventory_id, description, vat_no) VALUES ('" + collectedData.get(0) + "' , '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO chooses(stud_id, inventory_id) VALUES ('" + collectedData.get(3) + "' , '" + collectedData.get(0) + "')");
+        return r1 && r2;
     }
     //CHANGE HERE
     private static boolean insertStop(){ //insert for stop & transport table

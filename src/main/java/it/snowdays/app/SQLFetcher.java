@@ -80,9 +80,8 @@ public class SQLFetcher {
             a.showAndWait();
             DataHandler.getInstance().reloadRemote();
             ViewPane.getInstance().updateView();//refresh
-            return false;
             }
+            return true;
         }
-        return false;
     }
 }
