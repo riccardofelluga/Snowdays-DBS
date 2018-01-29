@@ -1,15 +1,11 @@
 package it.snowdays.app;
 
 import it.snowdays.app.panels.ViewPane;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * SQLFetcher
