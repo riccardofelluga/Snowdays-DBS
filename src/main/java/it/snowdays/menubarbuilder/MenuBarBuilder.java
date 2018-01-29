@@ -67,7 +67,6 @@ public class MenuBarBuilder extends MenuBar{
     public static MenuBar sportMenu(){
         MenuBar mb = new MenuBar();
 
-        mb.getMenus().add(new CompetesInMenu());
         mb.getMenus().add(new SportEventMenu());
         mb.getMenus().add(new HelperMenu());
 
