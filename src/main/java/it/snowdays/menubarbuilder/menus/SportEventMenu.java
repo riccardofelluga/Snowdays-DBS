@@ -33,7 +33,7 @@ public class SportEventMenu extends Menu{
 
         MenuItem manageSportLocations = new MenuItem("Manage locations");
         manageSportLocations.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(locQuery, "manageLocations");
+            DataHandler.getInstance().loadRemote(locQuery, "manageSportLocations");
             ViewPane.getInstance().updateView();
         });
 

@@ -22,13 +22,13 @@ public class SponsorMenu extends Menu {
             ViewPane.getInstance().updateView();
         });
 
-        MenuItem manageSponsorshipStuff = new MenuItem("Sponsorships stuff");
-        manageSponsorshipStuff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(sponsorshipQuery, "sponsorshipStuff");
+        MenuItem manageSponsorshipStaff = new MenuItem("Sponsorships staff");
+        manageSponsorshipStaff.setOnAction(e -> {
+            DataHandler.getInstance().loadRemote(sponsorshipQuery, "sponsorshipStaff");
             ViewPane.getInstance().updateView();
         });
 
         getItems().add(manageFirms);
-        getItems().add(manageSponsorshipStuff);
+        getItems().add(manageSponsorshipStaff);
     }
 }

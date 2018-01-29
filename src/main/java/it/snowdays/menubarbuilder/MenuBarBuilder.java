@@ -16,7 +16,6 @@ public class MenuBarBuilder extends MenuBar{
         mb.getMenus().add(new EdibleMenu());
         mb.getMenus().add(new BaseCampMenu());
         mb.getMenus().add(new SponsorMenu());
-        mb.getMenus().add(new CompetesInMenu());
         mb.getMenus().add(new SportEventMenu());
         mb.getMenus().add(new ParticipantsMenu());
         mb.getMenus().add(new AccomodationsMenu());
