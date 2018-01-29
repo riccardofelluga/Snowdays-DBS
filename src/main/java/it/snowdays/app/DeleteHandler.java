@@ -50,7 +50,7 @@ public class DeleteHandler {
         keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
 
         keyMap = new HashMap<String, String>();
-        keyMap.put("sponsorshipStaff", "DELETE FROM chooses WHERE stud_id = ");
+        keyMap.put("sponsorshipStaff", "DELETE FROM finds WHERE stud_id = ");
 
         keyMap = new HashMap<String, String>();
         keyMap.put("sportStuff", "DELETE FROM base_camp_thing WHERE inventory_id = ");

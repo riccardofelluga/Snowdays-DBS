@@ -106,8 +106,29 @@ public class AddHandler {
             case "manageHosts":
                 return insertInManageHosts();
 
+            case "playingDJs":
+                return insertPlayingDJs();
+
+            case "manageBreakFast":
+                return insertManageBreakfast();
+
+            case "manageLunch":
+                return insertManageLunch();
+
+            case "manageDinner":
+                return insertManageDinner();
+
+            case "managePeople":
+                return insertManagePeople();
+
+            case "sponsorshipStaff":
+                return insertSponsorshipStaff();
+
             case "manageTeams":
                 return insertInManageTeams();
+
+            case "manageLocationEvent":
+                return insertInManageLocationEvent();
 
             default:
                 break;
@@ -191,14 +212,14 @@ public class AddHandler {
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname, gender, university, rent, address, size, foodallergies) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','" + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + "','" + collectedData.get(7) + "','" + collectedData.get(8) + "')");
         return r1;
     }
-/*
+
     private static boolean insertSponsorshipStaff(){
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO chooses(stud_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','dinner')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name) VALUES ('" + collectedData.get(1) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO find(stud_id, vat_no) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO sponsor(vat_no, company) VALUES ('" + collectedData.get(4) + "','" + collectedData.get(3) +"')");
         return r1 && r2;
     }
-    */
+
     private static boolean insertInManageTeams(){
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO team(team_id, name) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "')");
