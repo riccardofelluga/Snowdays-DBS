@@ -2,11 +2,15 @@ package it.snowdays.app;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -24,21 +28,12 @@ public class TableHandler {
 
     private TableHandler() {
         //load the first table
-        DataHandler.getInstance().loadRemote("SELECT * FROM participant"); 
+        DataHandler.getInstance().loadRemote("SELECT * FROM participant", ""); 
     }
 
     public static TableHandler getInstance() {
         return instance;
     }
-
-    /*  
-    Maybe it is better to implement something like 
-    a method to set the default table(used by the mb) and than for the
-    search result another method to set the view -> than take the row of 
-    edit/modify it into the original 
-    USE THE HANDLER to modifi the right array
-    */
-
 
     public static TableView<ArrayList<String>> generateTable() {
 
@@ -71,11 +66,46 @@ public class TableHandler {
             tc.setCellFactory(TextFieldTableCell.forTableColumn());
             tc.setOnEditCommit(editEvent);
             //custom things here!
+            
 
             table.getColumns().add(tc);
             table.setEditable(true);
         }
-         
+        
+        TableColumn<ArrayList<String>, String> delCol = new TableColumn<>("Remove");
+
+            Callback<CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>> delCb = new Callback<TableColumn.CellDataFeatures<ArrayList<String>,String>,ObservableValue<String>>() {
+
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<ArrayList<String>, String> param) {
+					return new ReadOnlyObjectWrapper<String>(param.getValue().get(0));//first col
+				}
+            };
+
+            delCol.setCellValueFactory(delCb);
+            //try with button as type
+            delCol.setCellFactory(param -> new TableCell<ArrayList<String>, String>(){
+                private final Button delBtn = new Button("X");
+                @Override
+                protected void updateItem(String id, boolean empty){
+                    super.updateItem(id, empty);
+
+                    if(id == null){
+                        setGraphic(null);
+                        return;
+                    }
+
+                    setGraphic(delBtn);
+                    setAlignment(Pos.CENTER);
+                    delBtn.setOnAction(e->{
+                        //SET DELETE
+                        DeleteHandler d = new DeleteHandler();
+                        d.deleteRemote(id);    
+                    });
+                }
+            });
+
+        table.getColumns().add(delCol);
         table.setItems(inTableData);
 
         return table;
@@ -94,6 +124,10 @@ public class TableHandler {
 
             event.getTableView().getItems().set(tRow, tuple);
 
+            //SET UPDATE
+            UpdateHandler u = new UpdateHandler();
+            u.updateRemote(event.getTableView().getItems().get(tRow).get(0), DataHandler.getInstance().getHeader().get(tCol), event.getNewValue());
+            
         }
 
     };

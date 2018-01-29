@@ -10,16 +10,16 @@ import javafx.scene.control.MenuItem;
  */
 public class TransportMenu extends Menu{
 
-    private String stopsQuery = "SELECT s.name, s.departure_time, s.arrival_time, sa.transport_plateno FROM stop s LEFT JOIN stops_at sa ON s.stop_id = sa.stop_id";
+    private String stopsQuery = "SELECT s.stop_id, s.name, s.departure_time, s.arrival_time, sa.transport_plateno FROM stop s LEFT JOIN stops_at sa ON s.stop_id = sa.stop_id";
     // private String busPeopleQuery = "";
-    private String payloadQuery = "";
+    private String payloadQuery = "SELECT t.transport_plateno, bct.description FROM (transport t LEFT JOIN carries c ON t.transport_plateno = c.transport_plateno) LEFT JOIN base_camp_thing bct ON c.inventory_id = bct.inventory_id WHERE t.type = 'van' OR t.type = \'sprinter\'";
 
     public TransportMenu(){
         super("Transport");
         
         MenuItem manageStops = new MenuItem("Manage stops");
         manageStops.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(stopsQuery);
+            DataHandler.getInstance().loadRemote(stopsQuery, "");
             ViewPane.getInstance().updateView();
         });
 
@@ -31,7 +31,7 @@ public class TransportMenu extends Menu{
 
         MenuItem manageStuffPayloads = new MenuItem("Manage stuff payloads");
         manageStuffPayloads.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(payloadQuery);
+            DataHandler.getInstance().loadRemote(payloadQuery, "");
             ViewPane.getInstance().updateView();
         });
 

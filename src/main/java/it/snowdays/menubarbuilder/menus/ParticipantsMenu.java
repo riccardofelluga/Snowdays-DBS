@@ -10,21 +10,21 @@ import javafx.scene.control.MenuItem;
  */
 public class ParticipantsMenu extends Menu{
 
-    private String partQuery = "";
-    private String uniQuery = "";
+    private String partQuery = "SELECT * FROM participant";
+    private String uniQuery = "SELECT p.university, count(p.university) as quantity FROM participant p GROUP BY p.university";
 
     public ParticipantsMenu(){
         super("Participants");
 
         MenuItem managePart = new MenuItem("Manage people");
         managePart.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(partQuery);
+            DataHandler.getInstance().loadRemote(partQuery, "");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageUni = new MenuItem("Manage universities");
         manageUni.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(uniQuery);
+            DataHandler.getInstance().loadRemote(uniQuery, "");
             ViewPane.getInstance().updateView();
         });
 

@@ -14,11 +14,11 @@ import javafx.scene.control.MenuItem;
  */
 public class SportEventMenu extends Menu{
 
-    private String locQuery = "SELECT se.description, l.address, l.name " + 
+    private String locQuery = "SELECT se.sport_event_id, se.description, l.address, l.name " + 
                                 " FROM (sport_event se LEFT JOIN is_played_at ipa ON se.sport_event_id = ipa.sport_event_id)" +
                                 " LEFT JOIN location l ON ipa.location_id = l.location_id";
     
-    private String staffQuery = "SELECT p.name, p.surname, se.description AS sport_event, l.address AS location " +
+    private String staffQuery = "SELECT p.stud_id, p.name, p.surname, se.description AS sport_event, l.address AS location " +
                                 " FROM (((staff s LEFT JOIN participant p ON s.stud_id = p.stud_id) " +
                                 " RIGHT JOIN put_together pt ON pt.stud_id = s.stud_id " +
                                 " LEFT JOIN sport_event se ON pt.sport_event_id = se.sport_event_id) " +
@@ -29,25 +29,33 @@ public class SportEventMenu extends Menu{
 
         MenuItem manageSportLocations = new MenuItem("Manage locations");
         manageSportLocations.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(locQuery);
+            DataHandler.getInstance().loadRemote(locQuery, "");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageSportStaff = new MenuItem("Manage staff");
         manageSportStaff.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(staffQuery);
+            DataHandler.getInstance().loadRemote(staffQuery, "");
             ViewPane.getInstance().updateView();
         });
 
-        MenuItem scoreboard = new MenuItem("Scoreboard");
-        scoreboard.setOnAction(e -> {
-            String ID = getSBID("");//query here to fetch description
-            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = "+ ID + " ORDER BY placement ASC");
+        MenuItem scoreboardIndividual = new MenuItem("Individual Sports Scoreboard");
+        scoreboardIndividual.setOnAction(e -> {
+            String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN competes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "");
+            ViewPane.getInstance().updateView();
+        });
+
+        MenuItem scoreboardTeam = new MenuItem("Team Sports Scoreboard");
+        scoreboardTeam.setOnAction(e -> {
+            String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN clashes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "");
             ViewPane.getInstance().updateView();
         });
 
         
-        getItems().add(scoreboard);
+        getItems().add(scoreboardIndividual);
+        getItems().add(scoreboardTeam);
         getItems().add(manageSportLocations);
         getItems().add(manageSportStaff);
     }
@@ -83,6 +91,6 @@ public class SportEventMenu extends Menu{
             sbName = d.getItems().get(0); // returns the id of the default table
         }
 
-        return SQLFetcher.getData("SELECT sport_event_id FROM sport_event WHERE description = '" + sbName + "'").get(0).get(0);
+        return SQLFetcher.getData("SELECT sport_event_id FROM sport_event WHERE description = '" + sbName + "'").get(1).get(0);
     }
 }

@@ -10,14 +10,14 @@ import javafx.scene.control.MenuItem;
  */
 public class HostsMenu extends Menu{
 
-    private String hostsQuery = "";
+    private String hostsQuery = "SELECT h.phone_no, a.name, h.name, h.surname  FROM host h LEFT JOIN accommodation a ON h.accommodation_id = a.accommodation_id";
 
     public HostsMenu(){
         super("Hosts");
 
         MenuItem manageHosts= new MenuItem("Manage hosts");
         manageHosts.setOnAction(e -> {
-            DataHandler.getInstance().loadRemote(hostsQuery);
+            DataHandler.getInstance().loadRemote(hostsQuery, "");
             ViewPane.getInstance().updateView();
         });
 
