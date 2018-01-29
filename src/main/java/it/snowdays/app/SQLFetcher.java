@@ -64,13 +64,13 @@ public class SQLFetcher {
         return retrivedData;
     }
 
-    public static void nonSelectQuery(String query){
+    public static boolean nonSelectQuery(String query){
         Statement statement; 
         ResultSet set;
         try {
             statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
             set = statement.executeQuery(query);
-            System.out.println("query fired!");
+            return true;
         } catch(SQLException e) {
             if(!e.getSQLState().equals("02000")){
             Alert a = new Alert(AlertType.INFORMATION);
@@ -78,11 +78,11 @@ public class SQLFetcher {
             a.setHeaderText(e.getSQLState());
             a.setContentText(e.getMessage());
             a.showAndWait();
-
             DataHandler.getInstance().reloadRemote();
             ViewPane.getInstance().updateView();//refresh
+            return false;
             }
         }
-
+        return false;
     }
 }
