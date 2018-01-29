@@ -65,10 +65,11 @@ public class TableHandler {
             tc.setCellValueFactory(cb);
             tc.setCellFactory(TextFieldTableCell.forTableColumn());
             tc.setOnEditCommit(editEvent);
-            if(!DataHandler.getInstance().isReadOnly())
-                tc.setEditable(false);
             
             //custom things here!
+            if(!DataHandler.getInstance().isReadOnly()){
+                table.setEditable(true);
+            }
             table.getColumns().add(tc);
         }
         
@@ -107,7 +108,6 @@ public class TableHandler {
         
         if(!DataHandler.getInstance().isReadOnly()){
             table.getColumns().add(delCol);
-            table.setEditable(true);
         }
 
         table.setItems(inTableData);
