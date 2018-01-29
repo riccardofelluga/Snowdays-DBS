@@ -14,10 +14,10 @@ import javafx.scene.layout.GridPane;
 
 /**
  * AddHandler
- */ 
+ */
 
 public class AddHandler {
-    
+
     private static Dialog<ButtonType> d;
 
     private static ArrayList<String> collectedData;
@@ -40,7 +40,7 @@ public class AddHandler {
         //generate an array list and get from all -> colud work let's see
         int r = 0;
         ArrayList<TextField> fields = new ArrayList<TextField>();
-        
+
         //populate the dialog
         for (String s : DataHandler.getInstance().getHeader()) {
             TextField t = new TextField();
@@ -66,7 +66,7 @@ public class AddHandler {
         Optional<ButtonType> o = d.showAndWait();
 
         if(o.get() == addBtnType){
-            for (TextField t : fields) {       
+            for (TextField t : fields) {
                 collectedData.add(t.getText());
             }
 
@@ -79,14 +79,14 @@ public class AddHandler {
                 a.showAndWait();
             }
         }
-        
-       
+
+
     }
 
     private static boolean insertRemote(){
         if(collectedData == null)
             return false;
-        
+
         switch (DataHandler.getInstance().getTableName()) {
             case "participant":
                 return insertParticipant();
@@ -96,12 +96,15 @@ public class AddHandler {
 
             case "manageStuffPayloads":
                 return insertStuffPayload();//CHANGE HERE
-                
+
             case "sportStuff":
                 return insertSportBSC();
 
-            case"accommodationLocation":
+            case "accommodationLocation":
                 return insertInManageLocations();
+
+            case "manageHosts":
+                return insertInManageHosts();
             default:
                 break;
         }
@@ -138,8 +141,15 @@ public class AddHandler {
     }
     private static boolean insertInManageLocations(){
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + ", '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(accommodation_id, name, capacity, ref_phone_number) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id) VALUES ('" + collectedData.get(4) + "')");
+        return r1 && r2;
+    }
+
+    private static boolean insertInManageHosts(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO host(phone_no, name, surname) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO accommodation(name) VALUES ('" + collectedData.get(1) + "')");
         return r1 && r2;
     }
 }
