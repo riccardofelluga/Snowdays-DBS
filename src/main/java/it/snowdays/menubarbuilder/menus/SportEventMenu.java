@@ -53,14 +53,14 @@ public class SportEventMenu extends Menu
         MenuItem scoreboardIndividual = new MenuItem("Individual Sports Scoreboard");
         scoreboardIndividual.setOnAction(e -> {
             String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN competes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
-            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "individualSportsScoreboard");
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, p.name, p.surname, p.university FROM competes_in ci LEFT JOIN participant p ON ci.stud_id = p.stud_id WHERE sport_event_id = '" + ID + "' ORDER BY placement ASC", "individualSportsScoreboard");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem scoreboardTeam = new MenuItem("Team Sports Scoreboard");
         scoreboardTeam.setOnAction(e -> {
             String ID = getSBID("SELECT DISTINCT se.description FROM sport_event se RIGHT JOIN clashes_in ci ON ci.sport_event_id = se.sport_event_id");//query here to fetch description
-            DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = " + ID + " ORDER BY placement ASC", "teamSportsScoreboard");
+            DataHandler.getInstance().loadRemote("SELECT ci.placement, t.name FROM clashes_in ci LEFT JOIN team t ON ci.team_id = t.team_id WHERE sport_event_id = '" + ID + "' ORDER BY placement ASC", "teamSportsScoreboard");
             ViewPane.getInstance().updateView();
         });
 
