@@ -178,11 +178,10 @@ public class AddHandler {
     }
 
     private static boolean insertPlayingDJs(){
-        boolean r1, r2, r3;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO performance(performance_id, dj_name, start_hour, end_hour) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(5) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO event(name) VALUES ('" + collectedData.get(4) + "')");
-        r3 = SQLFetcher.nonSelectQuery("INSERT INTO location(address) VALUES ('" + collectedData.get(5) + "')");
-        return r1 && r2 && r3;
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO performance(performance_id, dj_name, start_hour, end_hour) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO performed_at(event_id,performance_id) VALUES ('" + collectedData.get(4) + "','" + collectedData.get(0) + "')");
+        return r1 && r2;
     }
 
 
