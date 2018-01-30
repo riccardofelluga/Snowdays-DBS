@@ -34,9 +34,7 @@ public class DeleteHandler {
         keyMap.put("insertTeams", "DELETE FROM team WHERE team_id = ");
 
         keyMap.put("manageHosts", "DELETE FROM host WHERE accommodation_id = ");
-
-        keyMap.put("manageLocations", "DELETE FROM event WHERE event_id = ");
-
+                
         keyMap.put("sponsorshipStaff", "DELETE FROM finds WHERE stud_id = ");
 
         keyMap.put("BSCTStuff", "DELETE FROM base_camp_thing WHERE inventory_id = ");
