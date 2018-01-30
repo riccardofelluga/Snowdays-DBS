@@ -68,7 +68,7 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("manageStops", "departure_time"), "UPDATE stop");
         queryMap.put(new Pair<String,String>("manageStops", "arrival_time"), "UPDATE stop");
         queryMap.put(new Pair<String,String>("manageStops", "transport_plateno"), "UPDATE transport");
-        keyMap.put("manageStop", "stop_id");
+        keyMap.put("manageStops", "stop_id");
 
         queryMap.put(new Pair<String,String>("manageStuffPayloads", "inventory_id"), "UPDATE carries");
         queryMap.put(new Pair<String,String>("manageStuffPayloads", "transport_plateno"), "UPDATE carries");
@@ -98,7 +98,7 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "company"), "UPDATE sponsor");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "vat_no"), "UPDATE finds");
         keyMap.put("sponsorshipStaff", "stud_id");
-        
+
         queryMap.put(new Pair<String,String>("BSCTStuff", "inventory_id"), "UPDATE base_camp_thing");
         queryMap.put(new Pair<String,String>("BSCTStuff", "description"), "UPDATE base_camp_thing");
         queryMap.put(new Pair<String,String>("BSCTStuff", "vat_no"), "UPDATE base_camp_thing");
