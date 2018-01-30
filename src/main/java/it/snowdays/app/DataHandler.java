@@ -17,6 +17,7 @@ public class DataHandler {
     private DataHandler(){
         data = new ArrayList<ArrayList<String>>();
         tmpData = new ArrayList<ArrayList<String>>();
+        readOnly = true;
     }
 
     private static DataHandler instance = new DataHandler();

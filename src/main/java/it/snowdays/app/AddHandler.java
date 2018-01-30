@@ -126,9 +126,6 @@ public class AddHandler {
             case "manageTeams":
                 return insertInManageTeams();
 
-            case "manageLocations":
-                 return manageLocations();
-
             case "manageTasks":
                 return manageTasks();
 
