@@ -10,9 +10,9 @@ import javafx.scene.control.MenuItem;
  */
 public class EdibleMenu extends Menu{
 
-    private String breakfastQuery = "SELECT e.event_id, l.name, e.start_time, e.end_time FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = 'breakfast'";
-    private String lunchQuery = "SELECT e.event_id, l.name, e.start_time, e.end_time FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = \'lunch\'";
-    private String dinnerQuery = "SELECT e.event_id, l.name, e.start_time, e.end_time FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = \'dinner\'";
+    private String breakfastQuery = "SELECT e.event_id, e.start_time, e.end_time, l.location_id, l.name FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = 'breakfast'";
+    private String lunchQuery = "SELECT e.event_id, e.start_time, e.end_time, l.location_id, l.name  FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = 'lunch'";
+    private String dinnerQuery = "SELECT e.event_id, e.start_time, e.end_time, l.location_id, l.name FROM (event e LEFT JOIN takes_place_at tpa ON e.event_id = tpa.event_id) LEFT JOIN location l ON tpa.location_id = l.location_id WHERE e.type = 'dinner'";
     
 
     public EdibleMenu(){
@@ -25,13 +25,13 @@ public class EdibleMenu extends Menu{
         });
 
         MenuItem manageLunch = new MenuItem("Manage lunch");
-        manageBreakfast.setOnAction(e -> {
+        manageLunch.setOnAction(e -> {
             DataHandler.getInstance().loadRemote(lunchQuery, "manageLunch");
             ViewPane.getInstance().updateView();
         });
 
         MenuItem manageDinner = new MenuItem("Manage dinner");
-        manageBreakfast.setOnAction(e -> {
+        manageDinner.setOnAction(e -> {
             DataHandler.getInstance().loadRemote(dinnerQuery, "manageDinner");
             ViewPane.getInstance().updateView();
         });
