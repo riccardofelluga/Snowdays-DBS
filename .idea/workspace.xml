@@ -4,7 +4,12 @@
     <list default="true" id="cd6b63d1-0fa6-4296-a37c-17191f16100a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java" afterPath="$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java" afterPath="$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java" afterPath="$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/snowdays/app/AddHandler.class" afterPath="$PROJECT_DIR$/target/classes/it/snowdays/app/AddHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/snowdays/app/DeleteHandler.class" afterPath="$PROJECT_DIR$/target/classes/it/snowdays/app/DeleteHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/snowdays/app/SQLFetcher.class" afterPath="$PROJECT_DIR$/target/classes/it/snowdays/app/SQLFetcher.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/snowdays/app/UpdateHandler.class" afterPath="$PROJECT_DIR$/target/classes/it/snowdays/app/UpdateHandler.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/BaseCampMenu.class" afterPath="$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/BaseCampMenu.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SportEventMenu.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SportEventMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/SportEventMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="575">
+              <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,11 +71,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
-              <caret line="219" column="7" lean-forward="false" selection-start-line="219" selection-start-column="7" selection-end-line="219" selection-end-column="7" />
+            <state relative-caret-position="517">
+              <caret line="235" column="63" lean-forward="false" selection-start-line="235" selection-start-column="63" selection-end-line="235" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DataHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -79,8 +94,28 @@
       <file leaf-file-name="BaseCampMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/BaseCampMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+            <state relative-caret-position="433">
+              <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeleteHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLFetcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-849">
+              <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -106,8 +141,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/MenuBarBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/SportEventMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java" />
       </list>
     </option>
@@ -272,10 +308,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/it/snowdays/app/TableHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/it/snowdays/app/UpdateHandler.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/SponsorMenu.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/app/UpdateHandler.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/app/AddHandler.class</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -290,20 +325,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/app/panels/ViewPane$OptionsPane.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/app/panels/ViewPane.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/MenuBarBuilder.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/AccomodationsMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/BaseCampMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/EdibleMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/EventMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/HelperMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/HostsMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/ParticipantsMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/SponsorMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/SportEventMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/it/snowdays/menubarbuilder/menus/TransportMenu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/test-classes/it/snowdays/app/AppTest.class</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -529,7 +550,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13420000" />
+    <option name="totallyTimeSpent" value="23453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -597,14 +618,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/panels/AppPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/MenuBarBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -649,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -745,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -801,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -869,13 +878,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/test-classes/it/snowdays/app/AppTest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/test-classes/it/snowdays/app/AppTest.class" />
     <entry file="file://$PROJECT_DIR$/src/test/java/it/snowdays/app/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -884,19 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/panels/ViewPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/panels/AppPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,16 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <marker date="1517245508625" expanded="true" signature="2660:2666" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -941,50 +925,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/MenuBarBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/HelperMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/BaseCampMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DataHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="219" column="7" lean-forward="false" selection-start-line="219" selection-start-column="7" selection-end-line="219" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -997,13 +941,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/com/sun/javafx/event/CompositeEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/panels/ViewPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-213">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/SportEventMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        <state relative-caret-position="575">
+          <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/MenuBarBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/menubarbuilder/menus/BaseCampMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DeleteHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/SQLFetcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-849">
+          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/DataHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/snowdays/app/AddHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="235" column="63" lean-forward="false" selection-start-line="235" selection-start-column="63" selection-end-line="235" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>

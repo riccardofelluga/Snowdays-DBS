@@ -239,13 +239,13 @@ public class AddHandler {
     }
 
     //Insert into scoreboard for teams
-    /*
+
     private static boolean insertInTeamSportsScoreboard()
     {
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery();
-        r2 = SQLFetcher.nonSelectQuery();
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO clashes_in(placement) VALUES ('" + collectedData.get(0) + "'");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO team(name) VALUES ('" + collectedData.get(1) + "'");
         return r1 && r2;
-    }*/
+    }
 
 }

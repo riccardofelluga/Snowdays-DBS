@@ -43,7 +43,18 @@ public class DeleteHandler {
         
         keyMap.put("accommodationLocation", "DELETE FROM accomodation WHERE location_id = ");
 
+<<<<<<< Updated upstream
         keyMap.put("manageTasks", "DELETE FROM task WHERE task_id = ");
+=======
+        keyMap.put("individualSportsScoreboard", "DELETE FROM competes_in WHERE stud_id = ");
+
+        keyMap.put("teamSportsScoreboard", "DELETE FROM clashes_in WHERE team_id = ");
+
+        keyMap.put("manageSportLocations", "DELETE FROM sport_event WHERE sport_event_id = ");
+
+        keyMap.put("sportStaff", "DELETE FROM staff WHERE stud_id = ");
+
+>>>>>>> Stashed changes
 
     }
 
