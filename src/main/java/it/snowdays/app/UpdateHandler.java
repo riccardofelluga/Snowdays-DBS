@@ -1,8 +1,8 @@
 package it.snowdays.app;
 
-import java.util.HashMap;
-
 import javafx.util.Pair;
+
+import java.util.HashMap;
 
 /**
  * UpdateHandler
@@ -70,9 +70,9 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("manageStops", "transport_plateno"), "UPDATE transport");
         keyMap.put("manageStop", "stop_id");
 
-        queryMap.put(new Pair<String,String>("insertStuffPayload", "transport_plateno"), "UPDATE transport");
-        queryMap.put(new Pair<String,String>("insertStuffPayload", "description"), "UPDATE base_camp_thing");
-        keyMap.put("insertStuffPayload", "transport_plateno");
+        queryMap.put(new Pair<String,String>("manageStuffPayloads", "inventory_id"), "UPDATE carries");
+        queryMap.put(new Pair<String,String>("manageStuffPayloads", "transport_plateno"), "UPDATE carries");
+        keyMap.put("manageStuffPayloads", "inventory_id");
 
         queryMap.put(new Pair<String,String>("insertTeams", "team_id"), "UPDATE team");
         queryMap.put(new Pair<String,String>("insertTeams", "name"), "UPDATE team");
@@ -99,15 +99,15 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "vat_no"), "UPDATE finds");        
         keyMap.put("sponsorshipStaff", "stud_id");
         
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "event_id"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "name"), "UPDATE location");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "address"), "UPDATE location");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "space_ref"), "UPDATE location");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "type"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "theme"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "start_time"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("insertInManageLocationsEvent", "end_time"), "UPDATE event");
-        keyMap.put("insertInManageLocationsEvent", "event_id");
+        queryMap.put(new Pair<String,String>("manageLocations", "event_id"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageLocations", "name"), "UPDATE location");
+        queryMap.put(new Pair<String,String>("manageLocations", "address"), "UPDATE location");
+        queryMap.put(new Pair<String,String>("manageLocations", "space_ref"), "UPDATE location");
+        queryMap.put(new Pair<String,String>("manageLocations", "type"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageLocations", "theme"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageLocations", "start_time"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageLocations", "end_time"), "UPDATE event");
+        keyMap.put("manageLocations", "event_id");
 
         queryMap.put(new Pair<String,String>("BSCTStuff", "inventory_id"), "UPDATE base_camp_thing");
         queryMap.put(new Pair<String,String>("BSCTStuff", "description"), "UPDATE base_camp_thing");

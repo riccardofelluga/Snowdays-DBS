@@ -29,13 +29,13 @@ public class DeleteHandler {
                 
         keyMap.put("manageStops", "DELETE FROM stop WHERE stop_id = ");
 
-        keyMap.put("insertStuffPayload", "DELETE FROM transport WHERE transport_plateno = ");
+        keyMap.put("manageStuffPayloads", "DELETE FROM carries WHERE inventory_id = ");
         
         keyMap.put("insertTeams", "DELETE FROM team WHERE team_id = ");
         
         keyMap.put("manageHosts", "DELETE FROM host WHERE accommodation_id = ");
         
-        keyMap.put("insertInManageLocationsEvent", "DELETE FROM event WHERE event_id = ");
+        keyMap.put("manageLocations", "DELETE FROM event WHERE event_id = ");
         
         keyMap.put("sponsorshipStaff", "DELETE FROM finds WHERE stud_id = ");
         
