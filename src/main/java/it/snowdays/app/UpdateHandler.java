@@ -23,30 +23,33 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("participant", "role"), "UPDATE staff");
         keyMap.put("participant", "stud_id");
 
-        queryMap.put(new Pair<String,String>("playingDJs", "performance_id"), "UPDATE performance");
+        queryMap.put(new Pair<String,String>("playingDJs", "performance_id"), "UPDATE performed_at");
         queryMap.put(new Pair<String,String>("playingDJs", "dj_name"), "UPDATE performance");
         queryMap.put(new Pair<String,String>("playingDJs", "start_hour"), "UPDATE performance");
         queryMap.put(new Pair<String,String>("playingDJs", "end_hour"), "UPDATE performance");
+        queryMap.put(new Pair<String,String>("playingDJs", "event_id"), "UPDATE performed_at");
         queryMap.put(new Pair<String,String>("playingDJs", "name"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("playingDJs", "address"), "UPDATE location");
         keyMap.put("playingDJs", "performance_id");
 
-        queryMap.put(new Pair<String,String>("manageBreakfast", "event_id"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("manageBreakfast", "name"), "UPDATE location");
+        queryMap.put(new Pair<String,String>("manageBreakfast", "event_id"), "UPDATE takes_place_at");
         queryMap.put(new Pair<String,String>("manageBreakfast", "start_time"), "UPDATE event");
         queryMap.put(new Pair<String,String>("manageBreakfast", "end_time"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageBreakfast", "location_id"), "UPDATE takes_place_at");
+        queryMap.put(new Pair<String,String>("manageBreakfast", "name"), "UPDATE location");
         keyMap.put("manageBreakfast", "event_id");
 
         queryMap.put(new Pair<String,String>("manageLunch", "event_id"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("manageLunch", "name"), "UPDATE location");
         queryMap.put(new Pair<String,String>("manageLunch", "start_time"), "UPDATE event");
         queryMap.put(new Pair<String,String>("manageLunch", "end_time"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageLunch", "location_id"), "UPDATE takes_place_at");
+        queryMap.put(new Pair<String,String>("manageLunch", "name"), "UPDATE location");
         keyMap.put("manageLunch", "event_id");
 
         queryMap.put(new Pair<String,String>("manageDinner", "event_id"), "UPDATE event");
-        queryMap.put(new Pair<String,String>("manageDinner", "name"), "UPDATE location");
         queryMap.put(new Pair<String,String>("manageDinner", "start_time"), "UPDATE event");
         queryMap.put(new Pair<String,String>("manageDinner", "end_time"), "UPDATE event");
+        queryMap.put(new Pair<String,String>("manageDinner", "location_id"), "UPDATE takes_place_at");
+        queryMap.put(new Pair<String,String>("manageDinner", "name"), "UPDATE location");
         keyMap.put("manageDinner", "event_id");
 
         queryMap.put(new Pair<String,String>("managePeople", "stud_id"), "UPDATE participant");
