@@ -111,6 +111,13 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("BSCTStuff", "vat_no"), "UPDATE base_camp_thing");
         queryMap.put(new Pair<String,String>("BSCTStuff", "stud_id"), "UPDATE chooses");
         keyMap.put("BSCTStuff", "inventory_id");
+
+        queryMap.put(new Pair<String,String>("manageTasks", "task_id"), "UPDATE task");
+        queryMap.put(new Pair<String,String>("manageTasks", "description"), "UPDATE task");
+        queryMap.put(new Pair<String,String>("manageTasks", "start_hour"), "UPDATE task");
+        queryMap.put(new Pair<String,String>("manageTasks", "end_hour"), "UPDATE task");
+        queryMap.put(new Pair<String,String>("manageTasks", "stud_id"), "UPDATE must_help_in");
+        keyMap.put("manageTasks", "task_id");
     }
 
     public void updateRemote(String keyValue, String attribute,String value){

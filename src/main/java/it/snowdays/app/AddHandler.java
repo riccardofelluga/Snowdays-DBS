@@ -126,7 +126,10 @@ public class AddHandler {
 
             case "manageLocationEvent":
                 return insertInManageLocationEvent();
-
+            
+            case "manageTasks":
+                return manageTasks();
+                
             default:
                 break;
         }
@@ -225,6 +228,13 @@ public class AddHandler {
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, type, theme, start_time, end_time) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + collectedData.get(7) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
+        return r1 && r2;
+    }
+
+    private static boolean manageTasks(){
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO task(task_id, description, start_hour, end_hour) VALUES ('" + collectedData.get(0) + "' , '" + collectedData.get(1)+ "' , '" + collectedData.get(2) + "' , '" + collectedData.get(3) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO must_help_in(stud_id, task_id) VALUES ('"+ collectedData.get(4) + "' , '" + collectedData.get(0) + "')");
         return r1 && r2;
     }
 
