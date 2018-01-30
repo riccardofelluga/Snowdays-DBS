@@ -1,8 +1,8 @@
 package it.snowdays.app;
 
-import java.util.HashMap;
-
 import it.snowdays.app.panels.ViewPane;
+
+import java.util.HashMap;
 
 /**
  * DeleteHandler
@@ -27,7 +27,7 @@ public class DeleteHandler {
         
         keyMap.put("managePeople", "DELETE FROM participant WHERE stud_id = ");
                 
-        keyMap.put("manageStop", "DELETE FROM stop WHERE stop_id = ");
+        keyMap.put("manageStops", "DELETE FROM stop WHERE stop_id = ");
 
         keyMap.put("insertStuffPayload", "DELETE FROM transport WHERE transport_plateno = ");
         

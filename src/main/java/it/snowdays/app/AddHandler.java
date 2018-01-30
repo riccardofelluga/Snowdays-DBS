@@ -151,7 +151,7 @@ public class AddHandler {
     private static boolean manageStop(){ //insert for stop & transport table
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO stop(stop_id, name, departure_time, arrival_time) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(4) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO stops_at(transport_plateno, stop_id) VALUES ('" + collectedData.get(4) + "', '" + collectedData.get(0) + "')");
         return r1 && r2;
     }
 
