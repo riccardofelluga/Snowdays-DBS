@@ -13,7 +13,10 @@ public class DataHandler {
     private String query = "";
     private boolean readOnly = false;
     
-    private DataHandler(){}
+    private DataHandler(){
+        data = new ArrayList<ArrayList<String>>();
+        tmpData = new ArrayList<ArrayList<String>>();
+    }
 
     private static DataHandler instance = new DataHandler();
 

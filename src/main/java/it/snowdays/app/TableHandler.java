@@ -29,7 +29,7 @@ public class TableHandler {
 
     private TableHandler() {
         //load the first table
-        DataHandler.getInstance().loadRemote("SELECT * FROM participant", ""); 
+        //DataHandler.getInstance().loadRemote("SELECT * FROM participant", ""); 
     }
 
     public static TableHandler getInstance() {
