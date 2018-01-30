@@ -19,38 +19,38 @@ public class SQLFetcher {
     //"postgres";
     private static String password = "RRL=RKxkM#";
             //"postgresql";
-    
 
-    public static ArrayList<ArrayList<String>> getData(String query){
-        ArrayList<ArrayList<String>> retrivedData = new ArrayList<ArrayList<String>>();
 
-        Statement statement; 
-        ResultSet set;
-        boolean isHeaderParsed = false;
-    
-     try {
-        statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
-        set = statement.executeQuery(query);
-        ResultSetMetaData rsmd = set.getMetaData();
-        int colCount = rsmd.getColumnCount();
-        do{
+         public static ArrayList<ArrayList<String>> getData(String query){
+             ArrayList<ArrayList<String>> retrivedData = new ArrayList<ArrayList<String>>();
 
-            ArrayList<String> item  = new ArrayList<String>();
-            
-            if(!isHeaderParsed){
-                for(int i = 1; i <= colCount; i++ ){
-                    item.add(rsmd.getColumnName(i));
-                }
-                isHeaderParsed = true;
-            } else{
-                for(int i = 1; i <= colCount; i++){
-                    item.add(set.getString(i));
-                }
-            }
-            retrivedData.add(item);    
-        }while (set.next());
+             Statement statement;
+             ResultSet set;
+             boolean isHeaderParsed = false;
 
-		} catch (SQLException e) {
+             try {
+                 statement = DriverManager.getConnection(databaseURL, username, password).createStatement();
+                 set = statement.executeQuery(query);
+                 ResultSetMetaData rsmd = set.getMetaData();
+                 int colCount = rsmd.getColumnCount();
+                 do{
+
+                     ArrayList<String> item  = new ArrayList<String>();
+
+                     if(!isHeaderParsed){
+                         for(int i = 1; i <= colCount; i++ ){
+                             item.add(rsmd.getColumnName(i));
+                         }
+                         isHeaderParsed = true;
+                     } else{
+                         for(int i = 1; i <= colCount; i++){
+                             item.add(set.getString(i));
+                         }
+                     }
+                     retrivedData.add(item);
+                 }while (set.next());
+
+             } catch (SQLException e) {
 			Alert a = new Alert(AlertType.INFORMATION);
             a.setTitle("SQL error");
             a.setHeaderText(e.getSQLState());
