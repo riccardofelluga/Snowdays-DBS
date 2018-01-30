@@ -94,7 +94,7 @@ public class AddHandler {
                 return manageStop();
 
             case "manageStuffPayloads":
-                return insertStuffPayload();
+                return insertStuffPayloads();
 
             case "BSCTStuff":
                 return insertBCT();
@@ -126,8 +126,8 @@ public class AddHandler {
             case "manageTeams":
                 return insertInManageTeams();
 
-            case "manageLocationEvent":
-                return insertInManageLocationEvent();
+            case "manageLocations":
+                return manageLocations();
             
             case "manageTasks":
                 return manageTasks();
@@ -160,13 +160,10 @@ public class AddHandler {
         return r1 && r2;
     }
 
-    private static boolean insertStuffPayload(){ // insert for base camp thing & transport table
-        boolean r1, r2;
-
-        // TODO: 30/01/18 maybe changing description to inventory_id (base camp thing) in adding panel? don't know how t odeal with description alone
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
-        return r1 && r2;
+    private static boolean insertStuffPayloads(){ // insert for base camp thing & transport table
+        boolean r1;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO carries(inventory_id, transport_plateno) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "')");
+        return r1;
     }
     private static boolean insertInManageLocationsAccommodation(){
         boolean r1;
@@ -231,11 +228,12 @@ public class AddHandler {
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(description) VALUES ('" + collectedData.get(2) + "')");
         return r1 && r2;
     }
-    private static boolean insertInManageLocationEvent(){
-        boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, type, theme, start_time, end_time) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + collectedData.get(7) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name, address, space_ref) VALUES ('" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "')");
-        return r1 && r2;
+    private static boolean manageLocations(){
+        boolean r1, r2, r3;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, name, type, theme, start_time, end_time) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(6) + "','" + collectedData.get(7) + "','" + collectedData.get(8) + "','" + collectedData.get(9) + "')");
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id, name, address, space_ref) VALUES ('" + collectedData.get(2) + "','" + collectedData.get(3) + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "')");
+        r3 = SQLFetcher.nonSelectQuery("INSERT INTO takes_place_at(location_id, event_id) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(2) + "')");
+        return r1 && r2 && r3;
     }
 
     private static boolean manageTasks(){
