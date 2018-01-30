@@ -128,10 +128,10 @@ public class AddHandler {
 
             case "manageLocations":
                 return manageLocations();
-            
+
             case "manageTasks":
                 return manageTasks();
-                
+
             default:
                 break;
         }
@@ -189,7 +189,7 @@ public class AddHandler {
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO event(event_id, start_time, end_time, type) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','breakfast')");
         //r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(location_id,name) VALUES ('" + collectedData.get(3) + "','" + collectedData.get(4) + "')");
         r3 = SQLFetcher.nonSelectQuery("INSERT INTO takes_place_at(location_id,event_id) VALUES ('" + collectedData.get(3) + "','" + collectedData.get(0) + "')");
-    
+
         return r1 && r3;//r2 && r3;
     }
 
@@ -243,14 +243,20 @@ public class AddHandler {
         return r1 && r2;
     }
 
-    //Insert into scoreboard for teams
-
     private static boolean insertInTeamSportsScoreboard()
     {
         boolean r1, r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO clashes_in(placement) VALUES ('" + collectedData.get(0) + "'");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO clashes_in(sport_event_id, team_id, placement) SELECT DISTINCT sport_event.sport_event_id FROM sport_event se RIGHT JOIN clashes_in ci ON ci.sport_event_id = se.sport_event_id, SELECT team_id FROM team WHERE name = '" + collectedData.get(0) + "','" + collectedData.get(1) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO team(name) VALUES ('" + collectedData.get(1) + "'");
-        return r1 && r2;
+        return r1&&r2;
+    }
+
+    private static boolean insertInSportLocation()
+    {
+        boolean r1, r2;
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(sport_event_id, description) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "')");
+        //r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name,address) VALUES ('" + collectedData.get(2) + "','" + collectedData.get(3) + "'");
+        return r1;
     }
 
 }

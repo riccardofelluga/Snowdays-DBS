@@ -13,7 +13,7 @@ public class UpdateHandler {
     private HashMap<String, String> keyMap;
 
     public UpdateHandler(){
-        
+
         queryMap = new HashMap<Pair<String, String>, String>();
         keyMap = new HashMap<String, String>();
         //populate map here!
@@ -91,14 +91,14 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("accommodationLocation", "ref_phone_number"), "UPDATE accommodation");
         queryMap.put(new Pair<String,String>("accommodationLocation", "location_id"), "UPDATE accommodation");
         keyMap.put("accommodationLocation", "location_id");
-        
+
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "stud_id"), "UPDATE finds");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "name"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "surname"), "UPDATE participant");
         queryMap.put(new Pair<String,String>("sponsorshipStaff", "company"), "UPDATE sponsor");
-        queryMap.put(new Pair<String,String>("sponsorshipStaff", "vat_no"), "UPDATE finds");        
+        queryMap.put(new Pair<String,String>("sponsorshipStaff", "vat_no"), "UPDATE finds");
         keyMap.put("sponsorshipStaff", "stud_id");
-        
+
         queryMap.put(new Pair<String,String>("manageLocations", "event_id"), "UPDATE event");
         queryMap.put(new Pair<String,String>("manageLocations", "name"), "UPDATE location");
         queryMap.put(new Pair<String,String>("manageLocations", "address"), "UPDATE location");
@@ -121,6 +121,10 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("manageTasks", "end_hour"), "UPDATE task");
         queryMap.put(new Pair<String,String>("manageTasks", "stud_id"), "UPDATE must_help_in");
         keyMap.put("manageTasks", "task_id");
+
+        queryMap.put(new Pair<String,String>("insertInSportLocation", "sport_event_id"), "UPDATE sport_event");
+        queryMap.put(new Pair<String,String>("insertInSportLocation", "description"), "UPDATE sport_event");
+        keyMap.put("insertInSportLocation", "sport_event_id");
     }
 
     public void updateRemote(String keyValue, String attribute,String value){
