@@ -40,6 +40,7 @@ public class AddHandler {
 
         //populate the dialog
         for (String s : DataHandler.getInstance().getHeader()) {
+            if(!DataHandler.getInstance().getReadOnlyCols().contains(s)){
             TextField t = new TextField();
             t.setPromptText(s);
             t.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -55,6 +56,7 @@ public class AddHandler {
             grid.add(new Label(s + ":"),0,r);
             grid.add(t,1,r);
             r++;
+        }
         }
 
         d.setTitle("Add...");

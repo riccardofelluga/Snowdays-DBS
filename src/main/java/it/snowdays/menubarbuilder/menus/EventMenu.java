@@ -1,5 +1,7 @@
 package it.snowdays.menubarbuilder.menus;
 
+import java.util.ArrayList;
+
 import it.snowdays.app.DataHandler;
 import it.snowdays.app.panels.ViewPane;
 import javafx.scene.control.Menu;
@@ -23,6 +25,9 @@ public class EventMenu extends Menu{
         MenuItem manageDJ = new MenuItem("Playing DJs");
         manageDJ.setOnAction(e -> {
             DataHandler.getInstance().loadRemote(dJQuery, "playingDJs");
+            ArrayList<String> a = new ArrayList<String>();
+            a.add("name");
+            DataHandler.getInstance().setReadCols(a);
             ViewPane.getInstance().updateView();
         });
         getItems().add(manageEventLoc);

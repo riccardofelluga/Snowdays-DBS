@@ -27,10 +27,7 @@ public class TableHandler {
     private static TableHandler instance = new TableHandler();
     private static TableView<ArrayList<String>> table;
 
-    private TableHandler() {
-        //load the first table
-        //DataHandler.getInstance().loadRemote("SELECT * FROM participant", ""); 
-    }
+    private TableHandler() {}
 
     public static TableHandler getInstance() {
         return instance;
@@ -67,6 +64,10 @@ public class TableHandler {
             tc.setCellFactory(TextFieldTableCell.forTableColumn());
             tc.setOnEditCommit(editEvent);
             
+            if(DataHandler.getInstance().getReadOnlyCols().contains(DataHandler.getInstance().getHeader().get(i)))
+                tc.setEditable(false);
+                
+           
             //custom things here!
             if(!DataHandler.getInstance().isReadOnly()){
                 table.setEditable(true);

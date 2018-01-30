@@ -9,6 +9,7 @@ public class DataHandler {
 
     private ArrayList<ArrayList<String>> data = null;
     private ArrayList<ArrayList<String>> tmpData = null;
+    private ArrayList<String> readOnlyCols = new ArrayList<String>();
     private String tableName = ""; 
     private String query = "";
     private boolean readOnly = false;
@@ -73,5 +74,14 @@ public class DataHandler {
 
     public boolean isReadOnly(){
         return readOnly;
+    }
+
+    public void setReadCols(ArrayList<String> a){
+        readOnlyCols.clear();
+        readOnlyCols.addAll(a);
+    }
+
+    public ArrayList<String> getReadOnlyCols(){
+        return readOnlyCols;
     }
 }
