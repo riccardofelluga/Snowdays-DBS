@@ -157,6 +157,8 @@ public class AddHandler {
 
     private static boolean insertStuffPayload(){ // insert for base camp thing & transport table
         boolean r1, r2;
+
+        // TODO: 30/01/18 maybe changing description to inventory_id (base camp thing) in adding panel? don't know how t odeal with description alone
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO transport(transport_plateno) VALUES ('" + collectedData.get(0) + "')");
         r2 = SQLFetcher.nonSelectQuery("INSERT INTO base_camp_thing(description) VALUES ('" + collectedData.get(1) + "')");
         return r1 && r2;
