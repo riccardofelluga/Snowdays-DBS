@@ -141,9 +141,9 @@ public class AddHandler {
 
     private static boolean insertParticipant(){ //insert for the pariticipant table
         boolean r1,r2;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
-        r2 = SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(3) + "')");
-        return r1 && r2;
+        //r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "','" + collectedData.get(2) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO staff(stud_id, role) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(3) + "')");
+        return r1; //&& r2;
     }
     private static boolean insertBCT(){ //insert for the pariticipant table
         boolean r1, r2;

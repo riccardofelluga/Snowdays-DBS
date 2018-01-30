@@ -43,7 +43,7 @@ public class DeleteHandler {
 
         keyMap.put("accommodationLocation", "DELETE FROM accomodation WHERE location_id = ");
 
-        keyMap.put("manageTasks", "DELETE FROM task WHERE task_id = ");
+        keyMap.put("manageTasks", "DELETE FROM must_help_in WHERE stud_id = ");
 
         keyMap.put("individualSportsScoreboard", "DELETE FROM competes_in WHERE stud_id = ");
 

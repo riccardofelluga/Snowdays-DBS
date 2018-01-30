@@ -120,7 +120,7 @@ public class UpdateHandler {
         queryMap.put(new Pair<String,String>("manageTasks", "start_hour"), "UPDATE task");
         queryMap.put(new Pair<String,String>("manageTasks", "end_hour"), "UPDATE task");
         queryMap.put(new Pair<String,String>("manageTasks", "stud_id"), "UPDATE must_help_in");
-        keyMap.put("manageTasks", "task_id");
+        keyMap.put("manageTasks", "stud_id");
 
         queryMap.put(new Pair<String,String>("insertInSportLocation", "sport_event_id"), "UPDATE sport_event");
         queryMap.put(new Pair<String,String>("insertInSportLocation", "description"), "UPDATE sport_event");

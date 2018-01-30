@@ -26,6 +26,7 @@ public class DataHandler {
     }
     
     public ArrayList<ArrayList<String>> loadRemote(String query, String tableName){
+        readOnlyCols.clear();
         readOnly = false;
         data = SQLFetcher.getData(query);
         this.query = query;
