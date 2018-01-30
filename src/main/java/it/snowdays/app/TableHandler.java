@@ -63,7 +63,7 @@ public class TableHandler {
             tc.setCellValueFactory(cb);
             tc.setCellFactory(TextFieldTableCell.forTableColumn());
             tc.setOnEditCommit(editEvent);
-            
+
             if(DataHandler.getInstance().getReadOnlyCols().contains(DataHandler.getInstance().getHeader().get(i)))
                 tc.setEditable(false);
                 
@@ -138,13 +138,6 @@ public class TableHandler {
 
             DataHandler.getInstance().reloadRemote();
             ViewPane.getInstance().updateView();
-            
-            //removed local update --> useless
-            // ArrayList<String> tuple = event.getTableView().getItems().get(tRow);
-            // tuple.set(tCol, event.getNewValue());
-
-            // event.getTableView().getItems().set(tRow, tuple);
-
             
         }
 
