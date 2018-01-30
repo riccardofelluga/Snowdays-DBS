@@ -12,6 +12,7 @@ public class ParticipantsMenu extends Menu{
 
     private String partQuery = "SELECT * FROM participant";
     private String uniQuery = "SELECT p.university, count(p.university) as quantity FROM participant p GROUP BY p.university";
+    private String locQuery = "SELECT * FROM location";
 
     public ParticipantsMenu(){
         super("Participants");
@@ -28,7 +29,14 @@ public class ParticipantsMenu extends Menu{
             ViewPane.getInstance().updateView();
         });
 
+        MenuItem managelocations = new MenuItem("See locations");
+        managelocations.setOnAction(e -> {
+            DataHandler.getInstance().loadRemote(locQuery, "manageLocAccommodation", true);
+            ViewPane.getInstance().updateView();
+        });
+
         getItems().add(managePart);
         getItems().add(manageUni);
+        getItems().add(managelocations);
     }
 }

@@ -213,7 +213,7 @@ public class AddHandler {
 
     private static boolean insertManagePeople(){
         boolean r1;
-        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname, gender, university, rent, address, size, foodallergies) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) + "','" + "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + "','" + collectedData.get(7) + "','" + collectedData.get(8) + "')");
+        r1 = SQLFetcher.nonSelectQuery("INSERT INTO participant(stud_id, name, surname, gender, university, rent, address, size, foodallergies) VALUES ('" + collectedData.get(0) + "','" + collectedData.get(1) + "','" + collectedData.get(2) + "','" + collectedData.get(3) +  "','" + collectedData.get(4) + "','" + collectedData.get(5) + "','" + collectedData.get(6) + "','" + collectedData.get(7) + "','" + collectedData.get(8) + "')");
         return r1;
     }
 
