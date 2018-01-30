@@ -128,8 +128,15 @@ public class AddHandler {
 
             case "manageLocations":
                  return manageLocations();
+
             case "manageTasks":
                 return manageTasks();
+
+            case "manageSportLocation":
+                return insertInSportLocation();
+
+            case "manageSportStaff":
+                return insertInTeamSportsScoreboard();
 
             default:
                 break;
@@ -248,8 +255,8 @@ public class AddHandler {
     {
         boolean r1, r2;
         r1 = SQLFetcher.nonSelectQuery("INSERT INTO sport_event(sport_event_id, description) VALUES ('" + collectedData.get(0) + "', '" + collectedData.get(1) + "')");
-        //r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name,address) VALUES ('" + collectedData.get(2) + "','" + collectedData.get(3) + "'");
-        return r1;
+        r2 = SQLFetcher.nonSelectQuery("INSERT INTO location(name,address) VALUES ('" + collectedData.get(2) + "','" + collectedData.get(3) + "'");
+        return r1 && r2;
     }
 
 }
